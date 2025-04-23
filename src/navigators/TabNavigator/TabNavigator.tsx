@@ -18,6 +18,7 @@ import {
 import HomeNavigator from '@DevEx/navigators/HomeNavigator/HomeNavigator';
 import colors from '@DevEx/utils/styles/palette/colors';
 import {TRootNavigationProps} from '@DevEx/utils/types/types';
+import {SearchScreen} from '@DevEx/screens';
 
 const TabNavStack = createBottomTabNavigator<TRootNavigationProps>();
 
@@ -57,7 +58,7 @@ const TabNavigator = () => {
       />
       <TabNavStack.Screen
         name={SEARCH_NAVIGATOR}
-        component={BaseLayer}
+        component={SearchScreen}
         options={{
           headerShown: false,
           tabBarLabelStyle: {display: 'none'},

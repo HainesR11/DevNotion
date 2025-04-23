@@ -20,12 +20,13 @@ const ThemedIcon: FC<IconsProps> = ({
     activeTab: theme.colors.activeTab,
     inactiveTab: theme.colors.inactiveTab,
     error: theme.colors.errorDark,
+    xMark: theme.colors.grey50,
   };
 
   if (typeof Icon === 'function') {
     return (
       <Icon
-        color={IconColors[state] as string}
+        color={IconColors[state]}
         size={size}
         testID={testId}
         viewStyle={viewStyle}

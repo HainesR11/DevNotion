@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInput, View} from 'react-native';
+import {TextInput, TextInputProps, TextStyle, View} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
 import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
@@ -19,7 +19,7 @@ export const InputBox = ({
 }: TInputProps) => {
   const styles = useThemedStyles(createStyles);
   return (
-    <View style={{...styles.container}}>
+    <View style={styles.container}>
       <TextInput
         style={[styles.textInput, style]}
         placeholder={placeholder}
@@ -107,5 +107,28 @@ export const VerificationCodeInput = ({
         style={{letterSpacing: 40, textAlign: 'center'}}
       />
     </View>
+  );
+};
+
+interface TSearchInputProps extends TextInputProps {
+  style?: TextStyle | TextStyle[];
+  onChange?: (e: any) => void;
+}
+
+export const SearchInput = ({style, onChange, ...rest}: TSearchInputProps) => {
+  return (
+    <TextInput
+      style={[
+        {
+          borderColor: 'grey',
+          borderWidth: 1,
+          padding: 10,
+          borderRadius: 10,
+        },
+        style,
+      ]}
+      placeholder="Type here to search"
+      {...rest}
+    />
   );
 };

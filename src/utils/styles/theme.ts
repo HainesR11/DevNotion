@@ -4,7 +4,7 @@ import colors from './palette/colors';
 import padding from './spacing/padding';
 
 export const gradients = {
-  devexMainGradient: [colors.blue, colors.red],
+  devexMainGradient: [colors.steelBlue, colors.softMint],
   vipSilverGradient: ['#708186', '#A1ACB2'],
   vipGoldGradient: ['#C88B2E', '#E6BB63'],
   vipPlatinumGradient: ['#6E6C89', '#8D8DBE'],
@@ -60,7 +60,7 @@ const theme = createTheme({
   breakpoints: {},
   buttons: {
     primary: {
-      background: colors.lightBlue,
+      background: colors.steelBlue,
       foreground: colors.white,
     },
     secondary: {

@@ -29,7 +29,7 @@ type TGradientTextProps = {
 type TTextProps = {
   text: string | number;
   testId?: string;
-  textStyle?: TextStyle | TextStyle[];
+  textStyle?: StyleProp<TextStyle>;
   bold?: boolean;
   size?: number;
   italic?: boolean;
@@ -65,6 +65,7 @@ export const GradientText = ({
       style={[
         additionalTextStyles(maskStyle),
         textStyle,
+        // eslint-disable-next-line react-native/no-inline-styles
         bold && {fontWeight: 'bold'},
       ]}>
       {text}
@@ -122,6 +123,7 @@ type TTouchableText = {
   text: string;
   onPress: () => void;
   textStyle?: TextStyle | TextStyle[];
+  size?: any;
 };
 
 export const TouchableText = ({

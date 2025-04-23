@@ -30,7 +30,7 @@ export type Exact<T extends {[key: string]: unknown}> = {[K in keyof T]: T[K]};
 export type TInputProps = {
   placeholder: string;
   onChange: (e: string) => void;
-  style?: TextStyle;
+  style?: TextStyle | TextStyle[];
 };
 
 export type TIconInputProps = {
@@ -129,7 +129,7 @@ export type TOptions = {
 };
 
 export type TButtonProps = {
-  styles?: any;
+  styles?: ViewStyle;
   title: string;
   isLoading?: boolean;
   onPress: () => void;
@@ -166,6 +166,7 @@ export const IconStateNames = [
   'activeTab',
   'inactiveTab',
   'error',
+  'xMark',
 ] as const;
 
 export type IconState = (typeof IconStateNames)[number];
