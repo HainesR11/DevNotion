@@ -6,9 +6,16 @@ const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
  * @type {import('metro-config').MetroConfig}
  */
 
+const path = require('path');
+
 const config = {
   transformer: {
     babelTransformerPath: require.resolve('react-native-svg-transformer'),
+  },
+  resolver: {
+    extraNodeModules: {
+      '@generated': path.resolve(__dirname, 'src/api/monolith/__generated__'), // Update this to match actual generated location
+    },
   },
 };
 

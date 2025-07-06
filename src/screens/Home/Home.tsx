@@ -3,12 +3,11 @@ import {RefreshControl, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useSelector} from 'react-redux';
 
-import {useGetPosts} from '@DevEx/api/Posts/useFetchPosts';
+import {useGetPostsQuery} from '@DevEx/api/monolith/__generated__/getPosts.generated';
 import {Text} from '@DevEx/components';
 import PostItem from '@DevEx/components/PostItem/PostItem';
 // import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import {RootState} from '@DevEx/utils/store/store';
-import {THomeScreenDataItem} from '@DevEx/utils/types/types';
 
 import RenderLoading from './utils/LoadingCard';
 
@@ -18,7 +17,14 @@ const Home = () => {
   // const styles = useThemedStyles(createStyles);
   const user = useSelector((state: RootState) => state.user);
 
-  const {data: HomeData, isError, refetch} = useGetPosts();
+  const {
+    data: HomeData,
+    isError,
+    refetch,
+    error,
+  } = useGetPostsQuery({limit: 10, offset: 0});
+
+  console.log('HomeData', error);
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -40,7 +46,7 @@ const Home = () => {
     );
   }
 
-  if (HomeData === undefined || user === undefined) {
+  if (HomeData?.posts === undefined || user === undefined) {
     return (
       // eslint-disable-next-line react-native/no-inline-styles
       <SafeAreaView style={{alignItems: 'center'}} edges={[]}>
@@ -56,11 +62,11 @@ const Home = () => {
           <RefreshControl refreshing={loading} onRefresh={() => onRefetch()} />
         }
         scrollEventThrottle={16}>
-        {HomeData.map((item: THomeScreenDataItem, index: number) => {
+        {HomeData.posts?.map((item: any, index: number) => {
           return (
             <PostItem
               index={index}
-              length={HomeData.length}
+              length={HomeData?.posts?.length}
               key={index}
               item={item}
               user={user.user}

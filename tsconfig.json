@@ -7,7 +7,8 @@
     /* Completeness */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */,
     "paths": {
-      "@DevEx/*": ["./src/*"]
+      "@DevEx/*": ["./src/*"],
+      "@generated/*": ["./src/api/monolith/__generated__/*"],
     }
   }
 }
