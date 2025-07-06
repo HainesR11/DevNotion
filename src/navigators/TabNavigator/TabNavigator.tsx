@@ -16,9 +16,11 @@ import {
   SEARCH_NAVIGATOR,
 } from '@DevEx/constants/screenNames';
 import HomeNavigator from '@DevEx/navigators/HomeNavigator/HomeNavigator';
+import {SearchScreen} from '@DevEx/screens';
 import colors from '@DevEx/utils/styles/palette/colors';
 import {TRootNavigationProps} from '@DevEx/utils/types/types';
-import {SearchScreen} from '@DevEx/screens';
+
+import AccountNavigator from '../AccountNavigator/AccountNavigator';
 
 const TabNavStack = createBottomTabNavigator<TRootNavigationProps>();
 
@@ -78,7 +80,7 @@ const TabNavigator = () => {
           tabBarIcon: ({focused, size}) =>
             NotificationIcon({
               onPress: () =>
-                onPress(navigation.navigate(COMMUNITIES_NAVIGATOR)),
+                onPress(() => navigation.navigate(COMMUNITIES_NAVIGATOR)),
               count: count,
               icon: faUserGroup,
               size,
@@ -99,7 +101,7 @@ const TabNavigator = () => {
               icon: faBars,
             }),
         }}
-        component={BaseLayer}
+        component={AccountNavigator}
       />
     </TabNavStack.Navigator>
   );

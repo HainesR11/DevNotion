@@ -57,9 +57,8 @@ const AccountManagement = () => {
   const styles = useThemedStyles(createStyles);
 
   return (
-    <SafeAreaView edges={[]} style={styles.accountManagmentContainer}>
+    <SafeAreaView edges={['top']} style={styles.accountManagmentContainer}>
       <View>
-        <ModalHeader />
         <View style={styles.headerContainer}>
           <Image
             source={require('@DevEx/assets/me.jpg')}

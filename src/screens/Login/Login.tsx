@@ -22,6 +22,7 @@ const Login = () => {
 
   return (
     <SafeAreaView>
+      {/*Look at using Auth0 instead or custom made screen - Provides Jwt token, hashing, screen etc?*/}
       <LoginForm
         loginVisible={loginVisible}
         setLoginVisible={setLoginVisible}

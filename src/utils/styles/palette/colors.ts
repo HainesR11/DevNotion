@@ -40,9 +40,7 @@ const colors = {
   criticalRed: '#C1481B',
   shadowGrey: '#C4C4C426',
   orange: '#F15A22',
-  tvPrimary: '#5C29F9',
   techSummitPrimary: '#0000C5',
-  bbPrimary: '#8E2AE6',
 
   ...primaryColors,
   ...greyScale,

@@ -46,7 +46,7 @@ const PostItem = ({
   user,
   index,
 }: {
-  item: THomeScreenDataItem;
+  item: THomeScreenDataItem | unknown;
   user: TUserInfo;
   index: number;
   length?: number;

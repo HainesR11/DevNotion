@@ -10,10 +10,12 @@ import {
 } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
+  AnyAction,
   combineReducers,
   configureStore,
   createListenerMiddleware,
   DeepPartial,
+  ThunkDispatch,
 } from '@reduxjs/toolkit';
 
 import {

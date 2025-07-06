@@ -3,7 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 import {USER_SLICE} from '@DevEx/constants/sliceConstant';
 import {TUserInfo} from '@DevEx/utils/types/types';
 
-type TInitialState = {
+export type TUserState = {
   isAuthenticated: boolean;
   actions: string[] | null;
   isDarkMode: boolean;
@@ -40,7 +40,7 @@ type TInitialState = {
 //   },
 // };
 
-const initialState: TInitialState = {
+const initialState: TUserState = {
   isAuthenticated: false,
   actions: null,
   isDarkMode: false,
@@ -70,6 +70,29 @@ const userSlice = createSlice({
       return nextState;
     },
 
+    setSearchHistory: (state, action) => {
+      return {
+        ...state,
+        searchHistory: [...state.searchHistory, ...action.payload],
+      };
+    },
+
+    removeSearch: (state, action) => {
+      return {
+        ...state,
+        searchHistory: state.searchHistory.filter(
+          search => search !== action.payload,
+        ),
+      };
+    },
+
+    clearSearchHistory: state => {
+      return {
+        ...state,
+        searchHistory: [],
+      };
+    },
+
     clearUser: () => {
       return {
         ...initialState,
@@ -85,6 +108,13 @@ const userSlice = createSlice({
   },
 });
 
-export const {setUser, clearUser, resetUser} = userSlice.actions;
+export const {
+  setUser,
+  clearUser,
+  resetUser,
+  removeSearch,
+  clearSearchHistory,
+  setSearchHistory,
+} = userSlice.actions;
 
 export default userSlice.reducer;

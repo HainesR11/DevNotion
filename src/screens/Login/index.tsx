@@ -71,6 +71,8 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
 
   const onCreateUser = () => {
     const hashedPassword = Buffer.from(password, 'utf8').toString('base64');
+    //TODO: Have here to create new user in Monolith as well
+    //TODO: Change to use axios rather than useQuery
     createUserMutation.mutate(
       {
         email: username,
