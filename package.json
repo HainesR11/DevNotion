@@ -10,7 +10,8 @@
     "start": "react-native start",
     "test": "APP_ENV=test jest --maxWorkers=50%",
     "prepare": "husky install",
-    "ts": "tsc --noEmit --project tsconfig.lint.json"
+    "ts": "tsc --noEmit --project tsconfig.lint.json",
+    "generate": "graphql-codegen --config ./codegen.yaml"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -33,6 +34,8 @@
     "@tanstack/react-query-persist-client": "^5.10.0",
     "axios": "^1.5.1",
     "buffer": "^6.0.3",
+    "dayjs": "^1.11.13",
+    "graphql": "^16.11.0",
     "react": "18.2.0",
     "react-native": "0.72.6",
     "react-native-config": "^1.5.1",
@@ -45,7 +48,7 @@
     "react-native-screens": "^3.27.0",
     "react-native-splash-screen": "^3.3.0",
     "react-native-svg": "^13.9.0",
-    "react-native-uuid": "^2.0.1",
+    "react-native-uuid": "^2.0.3",
     "react-redux": "^8.1.1",
     "redux-persist": "^6.0.0"
   },
@@ -54,6 +57,12 @@
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "@babel/preset-env": "^7.20.0",
     "@babel/runtime": "^7.20.0",
+    "@graphql-codegen/cli": "5.0.3",
+    "@graphql-codegen/client-preset": "4.5.1",
+    "@graphql-codegen/near-operation-file-preset": "3.0.0",
+    "@graphql-codegen/typescript": "4.1.2",
+    "@graphql-codegen/typescript-operations": "4.4.1",
+    "@graphql-codegen/typescript-react-query": "6.1.0",
     "@react-native/eslint-config": "^0.72.2",
     "@react-native/metro-config": "^0.72.11",
     "@testing-library/jest-native": "5.4.3",
