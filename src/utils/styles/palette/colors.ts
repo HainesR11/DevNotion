@@ -1,5 +1,3 @@
-// The naming convention in this file corresponds to the SkyDesign on Invision
-
 const greyScale = {
   white: '#FFFFFF',
   grey2: '#FAFAFA',
@@ -33,6 +31,8 @@ const colors = {
   purpleDark: '#505074',
   primaryDark: '#000CC4',
   blue: '#000FF5',
+  softMint: '#D1E0D7',
+  steelBlue: '#607EBC',
   primaryBlue: '#006291',
   lightBlue: '#5271FF',
   errorLight: '#fc9d9d',
@@ -40,9 +40,7 @@ const colors = {
   criticalRed: '#C1481B',
   shadowGrey: '#C4C4C426',
   orange: '#F15A22',
-  tvPrimary: '#5C29F9',
   techSummitPrimary: '#0000C5',
-  bbPrimary: '#8E2AE6',
 
   ...primaryColors,
   ...greyScale,

@@ -30,3 +30,7 @@ export const createStyles = (theme: Theme) =>
       color: colors.lightGrey,
     },
   });
+
+// export const createSearchStyles = (theme: Theme) => StyleSheet.create({
+
+// });

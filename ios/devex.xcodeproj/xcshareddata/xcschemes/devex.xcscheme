@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "devexTests.xctest"
+               BuildableName = "devexTests"
                BlueprintName = "devexTests"
                ReferencedContainer = "container:devex.xcodeproj">
             </BuildableReference>

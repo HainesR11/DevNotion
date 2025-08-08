@@ -1,0 +1,36 @@
+overwrite: true
+schema:
+  - http://localhost:4004/graphql:
+      - headers:
+          - X-API-TOKEN: f50483d0-fc97-0136-a099-6239ebaab076
+documents:
+  - './src/api/monolith/**/*.ts'
+generates:
+  src/api/monolith/types.ts:
+    plugins:
+      - typescript
+    hooks:
+      afterOneFileWrite:
+        - prettier --write
+        - eslint --fix
+  src/:
+    preset: near-operation-file
+    presetConfig:
+      extension: .generated.ts
+      folder: ../__generated__
+      baseTypesPath: ~@DevEx/api/monolith/types
+    plugins:
+      - typescript-operations
+      - typescript-react-query
+    config:
+      withHooks: true
+      reactQueryVersion: 5
+      exposeQueryKeys: true
+      exposeMutationKeys: true
+      fetcher:
+        func: '../useAxios#useAxios'
+        isReactHook: true
+    hooks:
+      afterOneFileWrite:
+        - prettier --write
+        - eslint --fix

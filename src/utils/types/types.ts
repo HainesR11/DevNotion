@@ -1,7 +1,7 @@
-import {FC} from 'react';
-import {StyleProp, TextStyle, ViewStyle} from 'react-native';
-import {IconDefinition, IconProp} from '@fortawesome/fontawesome-svg-core';
-import {StackNavigationProp} from '@react-navigation/stack';
+import { FC } from 'react';
+import { StyleProp, TextStyle, ViewStyle } from 'react-native';
+import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import {
   ACCOUNT_DETAILS,
@@ -22,15 +22,18 @@ import {
   OPTIONS_SCREEN,
   SEARCH_NAVIGATOR,
   SEARCH_SCREEN,
+  SEARCH_VIEW_ALL_SCREEN,
   TAB_NAVIGATOR,
 } from '@DevEx/constants/screenNames';
 
-export type Exact<T extends {[key: string]: unknown}> = {[K in keyof T]: T[K]};
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
 
 export type TInputProps = {
   placeholder: string;
   onChange: (e: string) => void;
-  style?: TextStyle;
+  style?: TextStyle | TextStyle[];
 };
 
 export type TIconInputProps = {
@@ -50,9 +53,19 @@ export type TEmailIconInputProps = {
   value?: string;
 };
 
-export type THomeNagigatorProps = {
+export type THomeNavigatorProps = {
   [HOME_SCREEN]: undefined;
   [NOTIFICATION_SCREEN]: undefined;
+};
+
+export type TSearchNavigatorProps = {
+  [SEARCH_SCREEN]: undefined;
+  [SEARCH_VIEW_ALL_SCREEN]: undefined;
+};
+
+export type TAccountManagement = {
+  [ACCOUNT_DETAILS]: undefined;
+  [DEBUG_SCREEN]: undefined;
 };
 
 export type TRootNavigationProps = {
@@ -73,21 +86,20 @@ export type TRootNavigationProps = {
   [HOME_SCREEN]: undefined;
   ChatScreen: undefined;
   ComminityScreen: undefined;
+
+  // Search Screens
   [SEARCH_SCREEN]: undefined;
+  [SEARCH_VIEW_ALL_SCREEN]: undefined;
+
   [DEBUG_SCREEN]: undefined;
-  [COMMENT_SCREEN]: {id: string; interaction: 'Comments' | 'Share' | 'Likes'};
-  [OPTIONS_SCREEN]: {options: TOptions[]};
+  [COMMENT_SCREEN]: { id: string; interaction: 'Comments' | 'Share' | 'Likes' };
+  [OPTIONS_SCREEN]: { options: TOptions[] };
   [MESSAGES_SCREEN_HOME]: undefined;
-  [MESSAGES_SCREEN_MESSAGE]: {id: string};
+  [MESSAGES_SCREEN_MESSAGE]: { id: string };
   [NOTIFICATION_SCREEN]: undefined;
 };
 
-export type TAccountManagement = {
-  [ACCOUNT_DETAILS]: undefined;
-  [DEBUG_SCREEN]: undefined;
-};
-
-type TUser = {id: number; Name: string; profilePic?: string};
+type TUser = { id: number; Name: string; profilePic?: string };
 
 export type TUserInfo = {
   id: number;
@@ -115,8 +127,7 @@ type TCommentItem = {
 export type THomeScreenDataItem = {
   id: string;
   user: TPostItemUser;
-  data: {content: string; image?: unknown};
-  likes: {name?: string; username: string; image?: string}[];
+  data: { content: string; image?: unknown };
   comments: TCommentItem[];
 };
 
@@ -129,7 +140,7 @@ export type TOptions = {
 };
 
 export type TButtonProps = {
-  styles?: any;
+  styles?: ViewStyle;
   title: string;
   isLoading?: boolean;
   onPress: () => void;
@@ -166,6 +177,7 @@ export const IconStateNames = [
   'activeTab',
   'inactiveTab',
   'error',
+  'xMark',
 ] as const;
 
 export type IconState = (typeof IconStateNames)[number];

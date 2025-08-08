@@ -1,13 +1,13 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeHeader from '@DevEx/components/Headers/HomeHeader';
-import {HOME_SCREEN, NOTIFICATION_SCREEN} from '@DevEx/constants/screenNames';
+import { HOME_SCREEN, NOTIFICATION_SCREEN } from '@DevEx/constants/screenNames';
 import HomeScreen from '@DevEx/screens/Home/Home';
 import colors from '@DevEx/utils/styles/palette/colors';
-import {THomeNagigatorProps} from '@DevEx/utils/types/types';
+import { THomeNavigatorProps } from '@DevEx/utils/types/types';
 
-const HomeNavigatorStack = createStackNavigator<THomeNagigatorProps>();
+const HomeNavigatorStack = createStackNavigator<THomeNavigatorProps>();
 
 const BaseLayer = () => {
   return <></>;
@@ -25,7 +25,7 @@ const HomeNavigator = () => {
             backgroundColor: colors.grey2,
           },
           header: props =>
-            HomeHeader({isHomeScreen: true, title: props.route.name}),
+            HomeHeader({ isHomeScreen: true, title: props.route.name }),
         }}
         name={HOME_SCREEN}
         component={HomeScreen}
