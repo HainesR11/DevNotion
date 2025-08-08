@@ -1,10 +1,10 @@
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import useLogout from '@DevEx/utils/functions/useLogout/useLogout';
-import {RootState} from '@DevEx/utils/store/store';
+import { RootState } from '@DevEx/utils/store/store';
 
-import {createAxios} from './createAxios';
-import {logoutOnNoAuth} from './utils/callbacks';
+import { createAxios } from './createAxios';
+import { logoutOnNoAuth } from './utils/callbacks';
 
 export const useAxios = <TData, TVariables>(
   query: string,

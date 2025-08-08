@@ -1,5 +1,5 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import {
   ACCOUNT_NAVIGATOR,
@@ -11,7 +11,7 @@ import {
 } from '@DevEx/constants/screenNames';
 import CommentView from '@DevEx/screens/CommentView/CommentView';
 import OptionsMenu from '@DevEx/screens/OptionsMenu/OptionsMenu';
-import {TRootNavigationProps} from '@DevEx/utils/types/types';
+import { TRootNavigationProps } from '@DevEx/utils/types/types';
 
 import {
   AccountNavigator,
@@ -28,10 +28,11 @@ const LaunchNavigator = () => {
   return (
     <AuthStack.Navigator
       initialRouteName={TAB_NAVIGATOR}
-      screenOptions={{headerShown: false}}>
+      screenOptions={{ headerShown: false }}
+    >
       <AuthStack.Screen name={TAB_NAVIGATOR} component={TabNavigator} />
       <AuthStack.Screen
-        options={{presentation: 'modal'}}
+        options={{ presentation: 'modal' }}
         name={ACCOUNT_NAVIGATOR}
         component={AccountNavigator}
       />
@@ -54,8 +55,13 @@ const LaunchNavigator = () => {
       <AuthStack.Screen
         name={MESSAGES_NAVIGATOR}
         component={MessagesNavigator}
+        options={{
+          headerShown: true,
+          header: () => {
+            return <></>; // Placeholder for custom header
+          },
+        }}
       />
-      <AuthStack.Screen name={SEARCH_NAVIGATOR} component={SearchNavigator} />
     </AuthStack.Navigator>
   );
 };

@@ -1,9 +1,9 @@
-import React, {FC} from 'react';
-import {useSelector} from 'react-redux';
+import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 
-import {OnboardingNavigator} from '@DevEx/navigators';
+import { OnboardingNavigator } from '@DevEx/navigators';
 import Login from '@DevEx/screens/Login/Login';
-import {RootState} from '@DevEx/utils/store/store';
+import { RootState } from '@DevEx/utils/store/store';
 
 import AppHydration from './AppHydration';
 
@@ -11,8 +11,8 @@ interface TOnboardingWrapper {
   children?: React.ReactNode;
 }
 
-const OnboardingWrapper: FC<TOnboardingWrapper> = ({children}: any) => {
-  const {isAuthenticated, actions} = useSelector(
+const OnboardingWrapper: FC<TOnboardingWrapper> = ({ children }: any) => {
+  const { isAuthenticated, actions } = useSelector(
     (state: RootState) => state.user,
   );
 

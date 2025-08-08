@@ -5,19 +5,19 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import {Buffer} from 'buffer';
-import {Animated, TouchableOpacity, View} from 'react-native';
-import {useDispatch} from 'react-redux';
+import { Buffer } from 'buffer';
+import { Animated, TouchableOpacity, View } from 'react-native';
+import { useDispatch } from 'react-redux';
 
-import {useGetTokensFromLogin} from '@DevEx/api/authentication';
-import useCreateUser from '@DevEx/api/authentication/useCreateUser';
-import {Button, GradientText, Text} from '@DevEx/components';
+import { useGetTokensFromLogin } from '@DevEx/api/authentication';
+import createUserNode from '@DevEx/api/authentication/useCreateUser';
+import { Button, GradientText, Text } from '@DevEx/components';
 import ModalWithHeader from '@DevEx/components/layouts/ModalWithHeader/ModalWithHeader';
 import OutlineTextInput from '@DevEx/components/OutlineInputBox/OutlineInputBox';
-import {TouchableText} from '@DevEx/components/Text/text';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {setAuth} from '@DevEx/utils/store/authSlice/authSlice';
-import {setUser} from '@DevEx/utils/store/userSlice/userSlice';
+import { TouchableText } from '@DevEx/components/Text/text';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
+import { setAuth } from '@DevEx/utils/store/authSlice/authSlice';
+import { setUser } from '@DevEx/utils/store/userSlice/userSlice';
 
 import ForgotPassword from './ForgotPassword/ForgotPassword';
 
@@ -53,7 +53,7 @@ type TLoginForm = {
 //   });
 // };
 
-const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
+const LoginForm = ({ loginVisible, setLoginVisible }: TLoginForm) => {
   const styles = useThemedStyles(createStyles);
   const dispatch = useDispatch();
 
@@ -67,35 +67,29 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
   const positionAnim = useRef(new Animated.Value(0)).current;
 
   const loginMutation = useGetTokensFromLogin();
-  const createUserMutation = useCreateUser();
 
   const onCreateUser = () => {
     const hashedPassword = Buffer.from(password, 'utf8').toString('base64');
     //TODO: Have here to create new user in Monolith as well
     //TODO: Change to use axios rather than useQuery
-    createUserMutation.mutate(
-      {
-        email: username,
-        password: hashedPassword,
-        name,
-      },
-      {
-        onSuccess: ({data}) => {
-          dispatch(
-            setUser({
-              user: {
-                email: data.email,
-                name: data.name,
-                usernmae: data.username,
-                profilePic: data.image,
-              },
-              actions: data.actions,
-              isAuthenticated: true,
-            }),
-          );
-        },
-      },
-    );
+    createUserNode({
+      email: username,
+      password: hashedPassword,
+      name,
+    }).then(({ data }) => {
+      dispatch(
+        setUser({
+          user: {
+            email: data.email,
+            name: data.name,
+            usernmae: data.username,
+            profilePic: data.image,
+          },
+          actions: data.actions,
+          isAuthenticated: true,
+        }),
+      );
+    });
   };
 
   const onLogin = async () => {
@@ -108,15 +102,15 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
       },
       {
         onError: (error: Error) => console.log('--- error ---', error),
-        onSuccess: ({data}: TLoginSuccessData) => {
+        onSuccess: ({ data }: TLoginSuccessData) => {
           dispatch(
             setUser({
-              user: {...data.user},
+              user: { ...data.user },
               actions: data.actions,
               isAuthenticated: true,
             }),
           );
-          dispatch(setAuth({tokens: {OAuth: data.OAuth}}));
+          dispatch(setAuth({ tokens: { OAuth: data.OAuth } }));
         },
       },
     );
@@ -156,7 +150,8 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
           setForgotPassword(false);
         }}
         goBack={() => setForgotPassword(false)}
-        testID="LoginModal">
+        testID="LoginModal"
+      >
         <ForgotPassword />
       </ModalWithHeader>
     );
@@ -171,7 +166,8 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
         setCreateUser(false);
       }}
       goBack={createUser ? () => setCreateUser(false) : undefined}
-      testID="LoginModal">
+      testID="LoginModal"
+    >
       <View style={styles.screenContainer}>
         <View style={[styles.itemContainer]}>
           <View style={[styles.loginButtonContainer]}>
@@ -190,8 +186,10 @@ const LoginForm = ({loginVisible, setLoginVisible}: TLoginForm) => {
               textStyle={[styles.text]}
             />
           </View>
-          <Animated.View style={{top: positionAnim}}>
-            <Animated.View style={[{opacity: fadeAnim, bottom: positionAnim}]}>
+          <Animated.View style={{ top: positionAnim }}>
+            <Animated.View
+              style={[{ opacity: fadeAnim, bottom: positionAnim }]}
+            >
               <OutlineTextInput
                 style={[styles.inputStyle, styles.largeMarginBottom]}
                 title={'Name'}

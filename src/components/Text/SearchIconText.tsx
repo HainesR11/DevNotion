@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import {
   StyleProp,
   TextStyle,
@@ -6,14 +6,14 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import {IconDefinition} from '@fortawesome/fontawesome-svg-core';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 import XMark from '@DevEx/assets/Icons/Linear/XMark';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {IconProps} from '@DevEx/utils/types/types';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
+import { IconProps } from '@DevEx/utils/types/types';
 
-import {default as Icon} from '../Icon/Icon';
-import {Text} from './text';
+import { default as Icon } from '../Icon/Icon';
+import { Text } from './text';
 
 import createStyles from './IconText.styles';
 
@@ -29,7 +29,7 @@ interface IconTextProps {
   onRemove?: () => void;
 }
 
-const IconText: FC<IconTextProps> = ({
+const SearchIconText: FC<IconTextProps> = ({
   icon,
   testId,
   text,
@@ -42,22 +42,22 @@ const IconText: FC<IconTextProps> = ({
 }) => {
   const styles = useThemedStyles(createStyles);
 
-  return (
-    <View testID={testId} style={[styles.container, style]}>
+  return ( 
+    <TouchableOpacity
+      testID={testId}
+      style={[styles.container, style]}
+      onPress={onPress}
+    >
       <View style={styles.icon}>
         <Icon Icon={icon} size={iconSize} />
       </View>
-      <Text
-        text={text}
-        textStyle={[styles.text, textStyle]}
-        onPress={onPress}
-      />
+      <Text text={text} textStyle={[styles.text, textStyle]} />
       {enableRemove && (
         <TouchableOpacity onPress={onRemove}>
           <Icon Icon={XMark} size={iconSize} state="xMark" />
         </TouchableOpacity>
       )}
-    </View>
+    </TouchableOpacity>
   );
 };
-export default IconText;
+export default SearchIconText;

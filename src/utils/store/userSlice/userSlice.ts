@@ -1,7 +1,7 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-import {USER_SLICE} from '@DevEx/constants/sliceConstant';
-import {TUserInfo} from '@DevEx/utils/types/types';
+import { USER_SLICE } from '@DevEx/constants/sliceConstant';
+import { TUserInfo } from '@DevEx/utils/types/types';
 
 export type TUserState = {
   isAuthenticated: boolean;
@@ -54,7 +54,23 @@ const initialState: TUserState = {
     following: [],
     followers: [],
   },
-  searchHistory: ['search1', 'search2', 'search3', 'search4'],
+  searchHistory: [
+    'React Native',
+    'Redux Toolkit',
+    'TypeScript',
+    'JavaScript',
+    'Mobile Development',
+    'Cross-Platform Apps',
+    'State Management',
+    'UI Components',
+    'Hooks in React',
+    'Async Storage',
+    'Cross-Platform Apps',
+    'State Management',
+    'UI Components',
+    'Hooks in React',
+    'Async Storage',
+  ],
 };
 
 const userSlice = createSlice({

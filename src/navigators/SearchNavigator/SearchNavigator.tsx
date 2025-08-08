@@ -1,19 +1,27 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import {SEARCH_SCREEN} from '@DevEx/constants/screenNames';
-import {SearchScreen} from '@DevEx/screens';
-import {TRootNavigationProps} from '@DevEx/utils/types/types';
+import {
+  SEARCH_SCREEN,
+  SEARCH_VIEW_ALL_SCREEN,
+} from '@DevEx/constants/screenNames';
+import { SearchScreen } from '@DevEx/screens';
+import { TSearchNavigatorProps } from '@DevEx/utils/types/types';
+import SearchHistoryScreen from '@DevEx/screens/Search/SearchHistoryScreen';
 
-const SearchStack = createStackNavigator<TRootNavigationProps>();
+const SearchStack = createStackNavigator<TSearchNavigatorProps>();
 
 const SearchNavigator = () => {
   return (
-    <SearchStack.Navigator>
+    <SearchStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <SearchStack.Screen name={SEARCH_SCREEN} component={SearchScreen} />
       <SearchStack.Screen
-        options={{headerShown: false}}
-        name={SEARCH_SCREEN}
-        component={SearchScreen}
+        name={SEARCH_VIEW_ALL_SCREEN}
+        component={SearchHistoryScreen}
       />
     </SearchStack.Navigator>
   );

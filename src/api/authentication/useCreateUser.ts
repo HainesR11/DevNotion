@@ -1,43 +1,29 @@
 import axios from 'axios';
 import env from 'react-native-config';
-import {useMutation, UseMutationOptions} from '@tanstack/react-query';
+import { OAUTH_TOKEN_HEADER } from '@DevEx/constants/headers';
 
-type TCreateUserVariables = {
+type TUserData = {
   email: string;
   password: string;
-  name: string;
+  CSUID: string;
 };
 
-const createUser = async ({email, password, name}: TCreateUserVariables) => {
-  try {
-    const response = await axios.post(
-      `${env.NODE_SERVICE_URL}/api/authentication`,
-      {email, password, name},
-      // {headers: }
-    );
-    return response.data;
-  } catch (error) {
-    console.log('----error----', error);
+const createUserNode = async userData => {
+  const response = await axios.post(
+    `${env.NODE_SERVICE_URL}/api/authentication`,
+    { ...userData },
+    {
+      headers: {
+        [OAUTH_TOKEN_HEADER]: env.MONOLITH_API_TOKEN,
+      },
+    },
+  );
+
+  if (response.status !== 201) {
+    throw new Error('Failed to create user');
   }
+
+  return response.data;
 };
 
-const useCreateUser = <TError = unknown, TContext = unknown>(
-  options?: Omit<
-    UseMutationOptions<any, TError, TCreateUserVariables, TContext>,
-    'mutationKey'
-  > & {
-    mutationKey?: UseMutationOptions<
-      any,
-      TError,
-      TCreateUserVariables,
-      TContext
-    >['mutationKey'];
-  },
-) =>
-  useMutation({
-    mutationKey: ['createUser'],
-    mutationFn: (variables: TCreateUserVariables) => createUser(variables),
-    ...options,
-  });
-
-export default useCreateUser;
+export default createUserNode;

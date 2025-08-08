@@ -1,12 +1,12 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import {Theme} from '@DevEx/utils/styles/theme';
+import { Theme } from '@DevEx/utils/styles/theme';
+import colors from '@DevEx/utils/styles/palette/colors';
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
     searchListContainer: {
-      height: '97%',
-      marginTop: theme.spacing.ssm,
+      maxHeight: 280,
     },
     searchListOptionsContainer: {
       display: 'flex',
@@ -17,11 +17,10 @@ const createStyles = (theme: Theme) =>
       alignItems: 'center',
     },
     searchListOptionsClear: {
-      fontSize: theme.spacing.sm,
+      fontSize: theme.spacing.s,
+      color: colors.steelBlue,
       textAlign: 'center',
       marginRight: theme.spacing.ssm,
-      marginTop: theme.spacing.xs,
-      fontWeight: 'bold',
     },
     searchListOptionsRecents: {
       fontSize: theme.spacing.sm,

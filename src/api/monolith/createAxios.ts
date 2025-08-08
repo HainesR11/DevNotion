@@ -1,9 +1,9 @@
-import axios, {AxiosResponse} from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import env from 'react-native-config';
 import uuid from 'react-native-uuid';
 
-import {EncryptedAuthState} from '@DevEx/utils/store/authSlice/authSlice';
-import {TUserState} from '@DevEx/utils/store/userSlice/userSlice';
+import { EncryptedAuthState } from '@DevEx/utils/store/authSlice/authSlice';
+import { TUserState } from '@DevEx/utils/store/userSlice/userSlice';
 
 import MonolithError from './errors/MonolithError';
 import getErrorData from './utils/getErrorData';
@@ -76,10 +76,11 @@ export const createAxios = <TData, TVariables>({
     try {
       const response = await client.post(
         env.MONOLITH_API,
-        {query, variables},
+        { query, variables },
         {
           headers: {
             'x-request-id': correlationId,
+            NotionCESA01: authToken,
           },
         },
       );
@@ -100,7 +101,7 @@ export const createAxios = <TData, TVariables>({
         errorCallback(error);
       }
 
-      console.log({errorData, error});
+      console.log({ errorData, error });
 
       throw error;
     }
