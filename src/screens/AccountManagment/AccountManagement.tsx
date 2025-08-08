@@ -1,17 +1,16 @@
 import React from 'react';
-import {Image, TouchableOpacity, View} from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {useDispatch, useSelector} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
-import {Button, GradientText, Text} from '@DevEx/components';
-import ModalHeader from '@DevEx/components/layouts/ModalWithHeader/ModalHeader/ModalHeader';
-import {ACCOUNT_DETAILS, DEBUG_SCREEN} from '@DevEx/constants/screenNames';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {RootState} from '@DevEx/utils/store/store';
-import {clearUser} from '@DevEx/utils/store/userSlice/userSlice';
-import {TAccountManagement, TNavigationProps} from '@DevEx/utils/types/types';
+import { Button, GradientText, Text } from '@DevEx/components';
+import { ACCOUNT_DETAILS, DEBUG_SCREEN } from '@DevEx/constants/screenNames';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
+import { RootState } from '@DevEx/utils/store/store';
+import { clearUser } from '@DevEx/utils/store/userSlice/userSlice';
+import { TAccountManagement, TNavigationProps } from '@DevEx/utils/types/types';
 
 import createStyles from './AccountManagement.styles';
 
@@ -20,7 +19,10 @@ type TAccountManagementItem = {
   screenName: keyof TAccountManagement;
 };
 
-const AccountManagementItem = ({title, screenName}: TAccountManagementItem) => {
+const AccountManagementItem = ({
+  title,
+  screenName,
+}: TAccountManagementItem) => {
   const navigation = useNavigation<TNavigationProps>();
 
   const styles = useThemedStyles(createStyles);
@@ -51,7 +53,7 @@ const AccountManagement = () => {
     return item.rules.every(rule => rule === true);
   });
 
-  const {user} = useSelector((state: RootState) => state.user);
+  const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
   const styles = useThemedStyles(createStyles);
@@ -74,7 +76,7 @@ const AccountManagement = () => {
             <Text textStyle={styles.headerText} text={user.email} />
           </View>
         </View>
-        {filteredActions.map(({title, screenName}, index) => {
+        {filteredActions.map(({ title, screenName }, index) => {
           return (
             <AccountManagementItem
               key={index}

@@ -10,12 +10,10 @@ import {
 } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
-  AnyAction,
   combineReducers,
   configureStore,
   createListenerMiddleware,
   DeepPartial,
-  ThunkDispatch,
 } from '@reduxjs/toolkit';
 
 import {
@@ -27,7 +25,7 @@ import authReducer from '@DevEx/utils/store/authSlice/authSlice';
 import configReducer from '@DevEx/utils/store/configSlice/configSlice';
 import userReducer from '@DevEx/utils/store/userSlice/userSlice';
 
-import {createKeychainStorage} from './Keychain';
+import { createKeychainStorage } from './Keychain';
 
 const keychain = createKeychainStorage();
 

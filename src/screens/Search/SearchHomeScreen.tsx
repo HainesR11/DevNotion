@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -14,16 +13,11 @@ import theme from '@DevEx/utils/styles/theme';
 import createStyles from './Search.styles';
 import { Text } from '@DevEx/components';
 import { noop } from '@DevEx/utils/functions/minorFunctions';
-import {
-  SEARCH_NAVIGATOR,
-  SEARCH_VIEW_ALL_SCREEN,
-} from '@DevEx/constants/screenNames';
-import {
-  TNavigationProps,
-  TSearchNavigatorProps,
-} from '@DevEx/utils/types/types';
+import { SEARCH_VIEW_ALL_SCREEN } from '@DevEx/constants/screenNames';
+import { TSearchNavigatorProps } from '@DevEx/utils/types/types';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { setSearchHistory as setSearchHistoryState } from '@DevEx/utils/store/userSlice/userSlice';
 
 const SearchScreen = () => {
   const styles = useThemedStyles(createStyles);
@@ -38,11 +32,10 @@ const SearchScreen = () => {
   const [searchHistory, setSearchHistory] = useState<string[]>(
     searchHistoryState.slice(0, 8),
   );
-  const [_, setSearchText] = useState('');
 
   return (
     <SafeAreaView style={{ marginHorizontal: theme.spacing.m }}>
-      <SearchBar onChange={setSearchText} />
+      <SearchBar onChange={() => {}} />
       <View style={styles.searchListOptionsContainer}>
         <Text text="Recent" textStyle={styles.searchListOptionsRecents} />
         <Text
@@ -77,6 +70,7 @@ const SearchScreen = () => {
                 setSearchHistory(
                   searchHistory.filter(() => item === historyIndex[0]),
                 );
+                dispatch(setSearchHistoryState(searchHistory));
               }}
             />
           );

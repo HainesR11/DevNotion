@@ -6,19 +6,13 @@ import {
   COMMENT_SCREEN,
   MESSAGES_NAVIGATOR,
   OPTIONS_SCREEN,
-  SEARCH_NAVIGATOR,
   TAB_NAVIGATOR,
 } from '@DevEx/constants/screenNames';
 import CommentView from '@DevEx/screens/CommentView/CommentView';
 import OptionsMenu from '@DevEx/screens/OptionsMenu/OptionsMenu';
 import { TRootNavigationProps } from '@DevEx/utils/types/types';
 
-import {
-  AccountNavigator,
-  MessagesNavigator,
-  SearchNavigator,
-  TabNavigator,
-} from '../index';
+import { AccountNavigator, MessagesNavigator, TabNavigator } from '../index';
 
 import 'react-native-gesture-handler';
 
