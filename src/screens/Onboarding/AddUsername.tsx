@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
-import {Alert, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useState } from 'react';
+import { Alert, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDispatch, useSelector } from 'react-redux';
 
 import useUpdateUserMutation from '@DevEx/api/authentication/useUpdateUser';
-import {Button, Text} from '@DevEx/components';
+import { Button, Text } from '@DevEx/components';
 import OutlineTextInput from '@DevEx/components/OutlineInputBox/OutlineInputBox';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {RootState} from '@DevEx/utils/store/store';
-import {setUser} from '@DevEx/utils/store/userSlice/userSlice';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
+import { RootState } from '@DevEx/utils/store/store';
+import { setUser } from '@DevEx/utils/store/userSlice/userSlice';
 
 import createStyles from './Onboarding.styles';
 
@@ -19,7 +19,7 @@ const AddUsername = () => {
   const [hasError, setHasError] = useState<THasError>(undefined);
   const [username, setUsername] = useState<string>('');
   const updateUserMutation = useUpdateUserMutation();
-  const {user, actions} = useSelector((state: RootState) => state.user);
+  const { user, actions } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
   const skipOnPress = () => {
@@ -88,18 +88,18 @@ const AddUsername = () => {
           />
         )}
       </View>
-      <View style={{alignItems: 'center'}}>
+      <View style={{ alignItems: 'center' }}>
         <Button
           disabled={hasError === 'Duplicate' || !username}
           title="Continue"
           onPress={() =>
             updateUserMutation.mutate(
-              {params: {username: username}, id: user.id},
+              { params: { username: username }, id: user.id },
               {
-                onSuccess: ({data}) => {
+                onSuccess: ({ data }) => {
                   dispatch(
                     setUser({
-                      user: {...user, username: data.username},
+                      user: { ...user, username: data.username },
                       actions: actions?.filter(action => {
                         return action !== 'Onboarding';
                       }),

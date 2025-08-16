@@ -42,7 +42,7 @@ const SearchIconText: FC<IconTextProps> = ({
 }) => {
   const styles = useThemedStyles(createStyles);
 
-  return ( 
+  return (
     <TouchableOpacity
       testID={testId}
       style={[styles.container, style]}

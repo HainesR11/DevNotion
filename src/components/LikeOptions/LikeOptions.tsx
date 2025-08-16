@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
   Animated,
   TouchableOpacity,
@@ -11,12 +11,12 @@ import {
   faLightbulb,
   faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 import colors from '@DevEx/utils/styles/palette/colors';
 
-import {Text} from '../Text/text';
+import { Text } from '../Text/text';
 
 import createStyles from '../PostItem/PostItem.styles';
 
@@ -58,7 +58,8 @@ const LikeOptions = ({
             opacity: animatedValues.animatedOpacity,
             bottom: animatedValues.animatedPosition,
           },
-        ]}>
+        ]}
+      >
         <TouchableOpacity onPress={() => setLiked('LIKE')}>
           <FontAwesomeIcon icon={faThumbsUp} color={colors.primaryBlue} />
         </TouchableOpacity>

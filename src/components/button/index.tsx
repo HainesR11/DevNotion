@@ -1,14 +1,20 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Animated, Pressable, Text, TouchableOpacity, View} from 'react-native';
-import {faCheck} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  Animated,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {TButtonProps} from '@DevEx/utils/types/types';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
+import { TButtonProps } from '@DevEx/utils/types/types';
 
 import LoadingSpinner from '../layouts/loadingSpinner/loadingSpinner';
 
-import {createStyles} from './Button.styles';
+import { createStyles } from './Button.styles';
 
 export const Button = ({
   type = 'Primary',
@@ -28,7 +34,8 @@ export const Button = ({
           style.button.container,
           styles,
           disabled ? style.disbaledBackground : style.background,
-        ]}>
+        ]}
+      >
         {isLoading ? (
           <LoadingSpinner />
         ) : (
@@ -38,7 +45,7 @@ export const Button = ({
     </TouchableOpacity>
   ) : (
     <TouchableOpacity onPress={onPress}>
-      <View style={{...style.button.container, ...styles}}>
+      <View style={{ ...style.button.container, ...styles }}>
         {isLoading ? (
           <LoadingSpinner />
         ) : (
@@ -53,7 +60,7 @@ type TRadioButton = {
   text: string;
 };
 
-export const RadioButton = ({text}: TRadioButton) => {
+export const RadioButton = ({ text }: TRadioButton) => {
   const styles = useThemedStyles(createStyles);
   const [checked, setChecked] = useState<boolean>(false);
   const rotateAnim = useRef(new Animated.Value(0)).current;
@@ -76,7 +83,7 @@ export const RadioButton = ({text}: TRadioButton) => {
     <View style={styles.radioContainer}>
       <Pressable onPress={() => setChecked(!checked)} style={styles.radio}>
         {checked && (
-          <Animated.View style={{opacity: rotateAnim}}>
+          <Animated.View style={{ opacity: rotateAnim }}>
             <FontAwesomeIcon icon={faCheck} />
           </Animated.View>
         )}

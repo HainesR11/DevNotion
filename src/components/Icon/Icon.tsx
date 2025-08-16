@@ -1,9 +1,9 @@
-import React, {FC} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import React, { FC } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 import colors from '@DevEx/utils/styles/palette/colors';
 import theme from '@DevEx/utils/styles/theme';
-import {IconsProps, IconState} from '@DevEx/utils/types/types';
+import { IconsProps, IconState } from '@DevEx/utils/types/types';
 
 const ThemedIcon: FC<IconsProps> = ({
   Icon,
@@ -12,7 +12,7 @@ const ThemedIcon: FC<IconsProps> = ({
   testId,
   viewStyle,
 }) => {
-  const IconColors: {[key in IconState]: string} = {
+  const IconColors: { [key in IconState]: string } = {
     default: theme.colors.grey70,
     selected: colors.primaryBlue,
     positive: theme.colors.positive,

@@ -1,10 +1,10 @@
-import React, {FC, useState} from 'react';
-import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
+import React, { FC, useState } from 'react';
+import { Image, ScrollView, TouchableOpacity, View } from 'react-native';
 
-import {Text} from '@DevEx/components';
+import { Text } from '@DevEx/components';
 import DynamicModal from '@DevEx/components/DynamicModal/DynamicModal';
-import {CommentViewHeader} from '@DevEx/components/Headers/CommentsHeader';
-import {HomeScreenData} from '@DevEx/testing/stubs';
+import { CommentViewHeader } from '@DevEx/components/Headers/CommentsHeader';
+import { HomeScreenData } from '@DevEx/testing/stubs';
 import colors from '@DevEx/utils/styles/palette/colors';
 import theme from '@DevEx/utils/styles/theme';
 
@@ -15,11 +15,11 @@ interface ICommentView {
     key: string;
     name: string;
     path?: string;
-    params: {id: string; interaction: THeaderParams};
+    params: { id: string; interaction: THeaderParams };
   };
 }
 
-const CommentView: FC<ICommentView> = ({route}) => {
+const CommentView: FC<ICommentView> = ({ route }) => {
   const routeParams = route?.params;
 
   // const {data, isLoading, isError} = useGetComments(routeParams?.id);
@@ -43,8 +43,9 @@ const CommentView: FC<ICommentView> = ({route}) => {
                 justifyContent: 'space-between',
                 marginHorizontal: theme.spacing.m,
                 paddingVertical: theme.spacing.s,
-              }}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              }}
+            >
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Image
                   style={{
                     width: 55,
@@ -57,7 +58,7 @@ const CommentView: FC<ICommentView> = ({route}) => {
                 <View>
                   <Text text={like.name} />
                   <Text
-                    textStyle={{color: theme.colors.grey50}}
+                    textStyle={{ color: theme.colors.grey50 }}
                     text={like.username}
                   />
                 </View>
@@ -70,7 +71,8 @@ const CommentView: FC<ICommentView> = ({route}) => {
                   height: theme.spacing.xl,
                   justifyContent: 'center',
                   borderRadius: 6,
-                }}>
+                }}
+              >
                 <Text
                   textStyle={{
                     color: 'white',
@@ -100,7 +102,8 @@ const CommentView: FC<ICommentView> = ({route}) => {
   return (
     <DynamicModal
       testID="dynamic-modal-comments"
-      header={() => CommentViewHeader(activeHeader, setActiveHeader)}>
+      header={() => CommentViewHeader(activeHeader, setActiveHeader)}
+    >
       <ScrollView>
         <Text text={'Scroll view here'} />
         <>{RenderView()}</>

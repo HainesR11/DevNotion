@@ -10,8 +10,8 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import MaskedView from '@react-native-masked-view/masked-view';
 
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {gradients} from '@DevEx/utils/styles/theme';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
+import { gradients } from '@DevEx/utils/styles/theme';
 
 import createStyles from './text.styles';
 
@@ -55,7 +55,7 @@ export const GradientText = ({
     const textStyles = [maskStyle];
 
     textAlign && textStyles.push(styles[textAlign]);
-    lineHeight && textStyles.push({lineHeight});
+    lineHeight && textStyles.push({ lineHeight });
 
     return textStyles;
   };
@@ -66,8 +66,9 @@ export const GradientText = ({
         additionalTextStyles(maskStyle),
         textStyle,
         // eslint-disable-next-line react-native/no-inline-styles
-        bold && {fontWeight: 'bold'},
-      ]}>
+        bold && { fontWeight: 'bold' },
+      ]}
+    >
       {text}
     </RNText>
   );
@@ -77,8 +78,9 @@ export const GradientText = ({
       <MaskedView maskElement={textComponent(styles.transparentBgr)}>
         <LinearGradient
           colors={gradients[gradientStyle]}
-          start={{x: 0, y: 0}}
-          end={{x: 0.8, y: 0}}>
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0.8, y: 0 }}
+        >
           {textComponent(styles.transparent)}
         </LinearGradient>
       </MaskedView>
@@ -111,8 +113,9 @@ export const Text = ({
         bold && styles.bold,
         italic && styles.italic,
         textStyle,
-        {marginVertical: VMargin, marginHorizontal: HMargin, fontSize: size},
-      ]}>
+        { marginVertical: VMargin, marginHorizontal: HMargin, fontSize: size },
+      ]}
+    >
       {text}
     </RNText>
   );

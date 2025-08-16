@@ -1,6 +1,6 @@
 import axios from 'axios';
 import env from 'react-native-config';
-import {useMutation, UseMutationOptions} from '@tanstack/react-query';
+import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 export type TTokenFromLoginVairables = {
   email: string;
@@ -25,7 +25,7 @@ const fetchGetTokenFromLogin = async ({
   password: string;
 }) => {
   try {
-    const {data} = await axios.get(
+    const { data } = await axios.get(
       `${env.NODE_SERVICE_URL}/api/authentication`,
       {
         params: {

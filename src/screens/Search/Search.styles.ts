@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import { Theme } from '@DevEx/utils/styles/theme';
 import colors from '@DevEx/utils/styles/palette/colors';
+import { Theme } from '@DevEx/utils/styles/theme';
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({

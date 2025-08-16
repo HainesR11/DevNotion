@@ -1,6 +1,6 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-import {CONFIG_SLICE} from '@DevEx/constants/sliceConstant';
+import { CONFIG_SLICE } from '@DevEx/constants/sliceConstant';
 
 const initialState = {
   show_maintenance_mode: false,
@@ -22,11 +22,11 @@ const configSlice = createSlice({
       return nextState;
     },
     resetConfig: () => {
-      return {...initialState};
+      return { ...initialState };
     },
   },
 });
 
-export const {setConfig} = configSlice.actions;
+export const { setConfig } = configSlice.actions;
 
 export default configSlice.reducer;

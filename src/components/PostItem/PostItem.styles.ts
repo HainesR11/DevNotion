@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import {Theme} from '@DevEx/utils/styles/theme';
+import { Theme } from '@DevEx/utils/styles/theme';
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create<any>({
@@ -114,7 +114,7 @@ const createStyles = (theme: Theme) =>
       width: '50%',
       padding: 10,
       shadowColor: theme.colors.grey20,
-      shadowOffset: {width: 0, height: 1},
+      shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.8,
       shadowRadius: 2,
       elevation: 5,

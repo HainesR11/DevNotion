@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import {TUserState} from '@DevEx/utils/store/userSlice/userSlice';
+import { TUserState } from '@DevEx/utils/store/userSlice/userSlice';
 
 type ErrorData = {
   isAuthenticated: boolean;

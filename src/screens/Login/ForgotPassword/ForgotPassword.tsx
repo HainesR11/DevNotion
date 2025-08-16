@@ -1,19 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Animated, Easing, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {faCircleCheck} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, Easing, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-import {Button, GradientText, Text} from '@DevEx/components';
+import { Button, GradientText, Text } from '@DevEx/components';
 import ListPanel from '@DevEx/components/ListPanel/ListPanel';
 import OutlineTextInput from '@DevEx/components/OutlineInputBox/OutlineInputBox';
-import {codeSentString} from '@DevEx/constants';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import { codeSentString } from '@DevEx/constants';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 import theme from '@DevEx/utils/styles/theme';
 
-import {FnEmailValidator} from '../validators/loginValidators';
+import { FnEmailValidator } from '../validators/loginValidators';
 
-import {createStyles} from './ForgotPassword.styles';
+import { createStyles } from './ForgotPassword.styles';
 
 type Email = string;
 
@@ -27,7 +27,7 @@ const CodeSent = ({
   rotateAnim: any;
   fadeInAnim: any;
   setActiveStep: (number: number) => void;
-  instructions: {id: number; text: string}[];
+  instructions: { id: number; text: string }[];
   activeStep: number;
 }) => {
   const styles = useThemedStyles(createStyles);
@@ -58,11 +58,12 @@ const CodeSent = ({
     <>
       <View style={styles.checkedContainer}>
         <Animated.View
-          style={[styles.AnimatedIcon, {transform: [{rotate: spin}]}]}
-          onResponderEnd={() => console.log('testing')}>
+          style={[styles.AnimatedIcon, { transform: [{ rotate: spin }] }]}
+          onResponderEnd={() => console.log('testing')}
+        >
           <FontAwesomeIcon icon={faCircleCheck} color="green" size={50} />
         </Animated.View>
-        <Animated.View style={[styles.animatedText, {opacity: fadeInAnim}]}>
+        <Animated.View style={[styles.animatedText, { opacity: fadeInAnim }]}>
           <Text text={codeSentString} />
           <ListPanel
             style={styles.listPanel}
@@ -88,9 +89,9 @@ const ForgotPassword = () => {
   const rotateAnim = useRef(new Animated.Value(0)).current;
 
   const instructions = [
-    {id: 1, text: 'Enter your email address'},
-    {id: 2, text: 'Check your emails'},
-    {id: 3, text: 'Enter new password'},
+    { id: 1, text: 'Enter your email address' },
+    { id: 2, text: 'Check your emails' },
+    { id: 3, text: 'Enter new password' },
   ];
 
   const validator = () => {

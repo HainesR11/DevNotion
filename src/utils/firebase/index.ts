@@ -1,8 +1,8 @@
 import remoteConfig from '@react-native-firebase/remote-config';
 
-import {firebaseDefaults} from '@DevEx/constants';
+import { firebaseDefaults } from '@DevEx/constants';
 
-import {setConfig} from '../store/configSlice/configSlice';
+import { setConfig } from '../store/configSlice/configSlice';
 
 export const fetchFirebase = async () => {
   await remoteConfig().setConfigSettings({
@@ -19,7 +19,7 @@ export const fetchFirebase = async () => {
           const config = remoteConfig().getAll();
           Object.entries(config).forEach($ => {
             const [key, entry] = $;
-            setConfig({[key]: entry.asString()});
+            setConfig({ [key]: entry.asString() });
           });
         })
         .catch(error => console.log('error - ', error)),
@@ -41,7 +41,7 @@ export const fetchFirebase = async () => {
           Object.entries(config).forEach($ => {
             const [key, entry] = $;
             key === event?.updatedKeys.toString() &&
-              setConfig({[key]: entry.asString()});
+              setConfig({ [key]: entry.asString() });
           });
         });
     }

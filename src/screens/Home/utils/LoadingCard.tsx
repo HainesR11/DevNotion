@@ -1,10 +1,10 @@
-import React, {useEffect, useRef} from 'react';
-import {Animated, Easing, Image, View} from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Animated, Easing, Image, View } from 'react-native';
 
-import {Text} from '@DevEx/components';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import { Text } from '@DevEx/components';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 
-import {createStyles} from './LoadingCard.styles';
+import { createStyles } from './LoadingCard.styles';
 
 const LoadingCard = ({
   animatedProfilePositionRef,
@@ -68,7 +68,7 @@ const LoadingCard = ({
   );
 };
 
-const RenderLoading = ({count}: {count: number}) => {
+const RenderLoading = ({ count }: { count: number }) => {
   const styles = useThemedStyles(createStyles);
   const animatedTextPositionRef = useRef(new Animated.Value(-15)).current;
   const animatedProfilePositionRef = useRef(new Animated.Value(-10)).current;
@@ -114,7 +114,7 @@ const RenderLoading = ({count}: {count: number}) => {
           textStyle={styles.updateInputBox}
         />
       </View>
-      {Array.from({length: count}).map((_item, index) => (
+      {Array.from({ length: count }).map((_item, index) => (
         <LoadingCard
           animatedProfilePositionRef={animatedProfilePositionRef}
           animatedTextPositionRef={animatedTextPositionRef}

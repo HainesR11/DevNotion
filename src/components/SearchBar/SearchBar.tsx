@@ -1,8 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Animated, Keyboard, View} from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, Keyboard, View } from 'react-native';
 
-import {SearchInput} from '@DevEx/components/input';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import { SearchInput } from '@DevEx/components/input';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 
 import createStyles from './SearchBar.styles';
 
@@ -10,7 +10,7 @@ type SearchBarProps = {
   onChange: (e: string) => void;
 };
 
-const SearchBar = ({onChange}: SearchBarProps) => {
+const SearchBar = ({ onChange }: SearchBarProps) => {
   const animatedWidth = useRef(new Animated.Value(0)).current;
   const animatedOpacity = useRef(new Animated.Value(0)).current;
 
@@ -48,7 +48,7 @@ const SearchBar = ({onChange}: SearchBarProps) => {
         duration: 500,
         useNativeDriver: false,
       }),
-    ]).start(({finished}) => finished && setSearchActive(false));
+    ]).start(({ finished }) => finished && setSearchActive(false));
   };
 
   return (
@@ -69,7 +69,8 @@ const SearchBar = ({onChange}: SearchBarProps) => {
                 width: animatedWidth,
                 opacity: animatedOpacity,
               },
-            ]}>
+            ]}
+          >
             Cancel
           </Animated.Text>
         </Animated.View>

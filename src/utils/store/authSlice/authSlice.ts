@@ -1,7 +1,7 @@
 import uuid from 'react-native-uuid';
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import {AUTH_SLICE} from '@DevEx/constants/sliceConstant';
+import { AUTH_SLICE } from '@DevEx/constants/sliceConstant';
 
 type TTokens = {
   OAuth: string;
@@ -35,6 +35,6 @@ const authSlice = createSlice({
   },
 });
 
-export const {setAuth, clearAuth} = authSlice.actions;
+export const { setAuth, clearAuth } = authSlice.actions;
 
 export default authSlice.reducer;

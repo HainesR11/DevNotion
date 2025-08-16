@@ -1,10 +1,10 @@
-import React, {FC, ReactNode} from 'react';
-import {Provider} from 'react-redux';
-import {NavigationContainer} from '@react-navigation/native';
-import {ThemeProvider} from '@shopify/restyle';
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import React, { FC, ReactNode } from 'react';
+import { Provider } from 'react-redux';
+import { NavigationContainer } from '@react-navigation/native';
+import { ThemeProvider } from '@shopify/restyle';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import {setupStore, store} from '@DevEx/utils/store/store';
+import { setupStore, store } from '@DevEx/utils/store/store';
 import theme from '@DevEx/utils/styles/theme';
 
 interface TestWrapperProps {
@@ -14,7 +14,7 @@ interface TestWrapperProps {
   };
 }
 
-const TestWrapper: FC<TestWrapperProps> = ({children, config}) => {
+const TestWrapper: FC<TestWrapperProps> = ({ children, config }) => {
   const storeOveride = config?.store ? setupStore(config?.store) : store;
 
   const client = new QueryClient({

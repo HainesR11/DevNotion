@@ -1,7 +1,7 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import {LoadingSpinner} from '@DevEx/screens';
+import { LoadingSpinner } from '@DevEx/screens';
 
 const AppHydration = () => {
   return (
@@ -11,7 +11,8 @@ const AppHydration = () => {
         alignContent: 'center',
         justifyContent: 'center',
         height: '100%',
-      }}>
+      }}
+    >
       <LoadingSpinner animating />
     </SafeAreaView>
   );

@@ -1,12 +1,12 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import {Button, Text} from '@DevEx/components';
+import { Button, Text } from '@DevEx/components';
 import ScreenWithHeader from '@DevEx/components/layouts/ScreenWithHeader/ScreenWithHeader';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {accountDetailsStub} from '@DevEx/testing/stubs';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
+import { accountDetailsStub } from '@DevEx/testing/stubs';
 import {
   setSearchHistory,
   setUser,
@@ -19,7 +19,7 @@ type TDebugItem = {
   value: string;
 };
 
-const DebugItem = ({value, title}: TDebugItem) => {
+const DebugItem = ({ value, title }: TDebugItem) => {
   const styles = useThemedStyles(createStyles);
   return (
     <View style={styles.DebugItemContainer}>
@@ -34,10 +34,10 @@ const debugData = [
     title: 'Platform',
     subtitle: DeviceInfo.getBrand() + ' ' + DeviceInfo.getModel(),
   },
-  {title: 'OS Version', subtitle: DeviceInfo.getSystemVersion()},
-  {title: 'App Name', subtitle: DeviceInfo.getApplicationName()},
-  {title: 'Version', subtitle: DeviceInfo.getVersion()},
-  {title: 'Build Number', subtitle: DeviceInfo.getBuildNumber()},
+  { title: 'OS Version', subtitle: DeviceInfo.getSystemVersion() },
+  { title: 'App Name', subtitle: DeviceInfo.getApplicationName() },
+  { title: 'Version', subtitle: DeviceInfo.getVersion() },
+  { title: 'Build Number', subtitle: DeviceInfo.getBuildNumber() },
 ];
 
 const DebugScreen = () => {
@@ -58,7 +58,7 @@ const DebugScreen = () => {
         <Button
           type="Primary"
           title="LogOut"
-          onPress={() => dispatch(setUser({isAuthenticated: false}))}
+          onPress={() => dispatch(setUser({ isAuthenticated: false }))}
         />
         <Button
           type="Primary"

@@ -72,7 +72,6 @@ export const createAxios = <TData, TVariables>({
       headers,
       timeout,
     });
-
     try {
       const response = await client.post(
         env.MONOLITH_API,

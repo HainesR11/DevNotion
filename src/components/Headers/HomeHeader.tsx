@@ -1,24 +1,24 @@
 import React from 'react';
-import {Image, TouchableOpacity, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {faBell, faChevronLeft} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {useNavigation} from '@react-navigation/native';
+import { Image, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { faBell, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { useNavigation } from '@react-navigation/native';
 
-import {MessagesPlane} from '@DevEx/assets/Icons/Linear/MessagesPlane';
+import { MessagesPlane } from '@DevEx/assets/Icons/Linear/MessagesPlane';
 import {
   MESSAGES_NAVIGATOR,
   NOTIFICATION_SCREEN,
 } from '@DevEx/constants/screenNames';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {THeaderProps, TNavigationProps} from '@DevEx/utils/types/types';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
+import { THeaderProps, TNavigationProps } from '@DevEx/utils/types/types';
 
 import NotificationIcon from '../NotificationIcon/NotificationIcon';
-import {Text} from '../Text/text';
+import { Text } from '../Text/text';
 
 import createStyles from './Header.styles';
 
-export const HomeHeader = ({isHomeScreen = true, title}: THeaderProps) => {
+export const HomeHeader = ({ isHomeScreen = true, title }: THeaderProps) => {
   const navigation = useNavigation<TNavigationProps>();
 
   const styles = useThemedStyles(createStyles);
@@ -29,7 +29,8 @@ export const HomeHeader = ({isHomeScreen = true, title}: THeaderProps) => {
         <TouchableOpacity
           style={styles.chevron}
           testID="go-back-chevron"
-          onPress={() => navigation.goBack()}>
+          onPress={() => navigation.goBack()}
+        >
           <FontAwesomeIcon icon={faChevronLeft} />
         </TouchableOpacity>
         <Text

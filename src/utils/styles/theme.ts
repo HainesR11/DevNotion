@@ -1,4 +1,4 @@
-import {createTheme} from '@shopify/restyle';
+import { createTheme } from '@shopify/restyle';
 
 import colors from './palette/colors';
 import padding from './spacing/padding';
@@ -76,8 +76,8 @@ const theme = createTheme({
       foreground: colors.errorDark,
     },
     basic: {
-      selected: {border: colors.blue},
-      unselected: {border: colors.grey20},
+      selected: { border: colors.blue },
+      unselected: { border: colors.grey20 },
     },
   },
   form: {
@@ -102,8 +102,8 @@ const theme = createTheme({
       inactive: colors.grey20,
       switch: colors.white,
       size: {
-        switch: {width: 24, positionOffset: 20},
-        container: {height: 26, width: 46, radius: 40},
+        switch: { width: 24, positionOffset: 20 },
+        container: { height: 26, width: 46, radius: 40 },
       },
     },
   },

@@ -1,7 +1,7 @@
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import {clearAuth} from '@DevEx/utils/store/authSlice/authSlice';
-import {clearUser} from '@DevEx/utils/store/userSlice/userSlice';
+import { clearAuth } from '@DevEx/utils/store/authSlice/authSlice';
+import { clearUser } from '@DevEx/utils/store/userSlice/userSlice';
 
 const useLogout = () => {
   const dispatch = useDispatch();

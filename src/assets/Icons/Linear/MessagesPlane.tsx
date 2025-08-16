@@ -1,7 +1,7 @@
-import React, {FC} from 'react';
-import {G, Path, Svg} from 'react-native-svg';
+import React, { FC } from 'react';
+import { G, Path, Svg } from 'react-native-svg';
 
-import {IconProps} from '@DevEx/utils/types/types';
+import { IconProps } from '@DevEx/utils/types/types';
 
 export const MessagesPlane: FC<IconProps> = ({
   size,
@@ -16,7 +16,8 @@ export const MessagesPlane: FC<IconProps> = ({
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      fill="none">
+      fill="none"
+    >
       <G id="Communication / Paper_Plane">
         <Path
           id="Vector"

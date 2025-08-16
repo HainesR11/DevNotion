@@ -1,4 +1,4 @@
-import {HOME_NAVIGATOR, SEARCH_NAVIGATOR} from '@DevEx/constants/screenNames';
+import { HOME_NAVIGATOR, SEARCH_NAVIGATOR } from '@DevEx/constants/screenNames';
 
 export const NavigationProps = {
   //Tab Navigator

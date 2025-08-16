@@ -1,10 +1,10 @@
-import React, {FC, ReactNode, useCallback, useEffect, useRef} from 'react';
-import {Animated, Easing, View, ViewStyle} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import React, { FC, ReactNode, useCallback, useEffect, useRef } from 'react';
+import { Animated, Easing, View, ViewStyle } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 import isIOS from '@DevEx/utils/functions/isIOS/isIOS';
-import {TNavigationProps} from '@DevEx/utils/types/types';
+import { TNavigationProps } from '@DevEx/utils/types/types';
 
 import createStyles from './DynamicModal.styles';
 
@@ -87,7 +87,8 @@ const DynamicModal: FC<DynamicHeightModalCoreProps> = props => {
     <View style={[styles.background]} testID={testID}>
       <View style={styles.fillScreen} onTouchStart={closeDynamicModal} />
       <Animated.View
-        style={[styles.wrapper, {height: heightRef, maxHeight: maxHeight}]}>
+        style={[styles.wrapper, { height: heightRef, maxHeight: maxHeight }]}
+      >
         <View testID="dynamic-height-modal-panel" style={style}>
           <Animated.View
             testID="dynamic-height-modal-header"
@@ -95,7 +96,8 @@ const DynamicModal: FC<DynamicHeightModalCoreProps> = props => {
             onTouchMove={e =>
               heightRef.setValue(isIOS(939, 850) - e.nativeEvent.pageY)
             }
-            onTouchEnd={e => setHeight(isIOS(939, 850) - e.nativeEvent.pageY)}>
+            onTouchEnd={e => setHeight(isIOS(939, 850) - e.nativeEvent.pageY)}
+          >
             <View style={styles.headerBar} />
           </Animated.View>
           <View style={styles.header}>

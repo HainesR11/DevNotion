@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, ViewStyle} from 'react-native';
+import { View, ViewStyle } from 'react-native';
 
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 
-import {Text} from '../Text/text';
+import { Text } from '../Text/text';
 
 import createStyles from './ListPanel.styles';
 
@@ -14,9 +14,9 @@ type TListPanel = {
   active: number;
 };
 
-type TDataObject = {id: number; text: string};
+type TDataObject = { id: number; text: string };
 
-const ListPanel = ({title, data, active, style}: TListPanel) => {
+const ListPanel = ({ title, data, active, style }: TListPanel) => {
   const styles = useThemedStyles(createStyles);
   return (
     <View style={[style, styles.instructionsContainer]}>
@@ -34,7 +34,8 @@ const ListPanel = ({title, data, active, style}: TListPanel) => {
                   ? styles.activeStep
                   : styles.inActiveStep,
                 styles.instructionId,
-              ]}>
+              ]}
+            >
               <Text
                 textStyle={styles.instructionIdNumber}
                 text={`${instruction.id}`}

@@ -1,8 +1,8 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import {AddUsername} from '@DevEx/screens';
+import { AddUsername } from '@DevEx/screens';
 import AddProfielPic from '@DevEx/screens/Onboarding/AddProfilePic';
 
 export type TOnboardingNavigator = {
@@ -19,8 +19,9 @@ const OnboardingNavigator = () => {
         initialRouteName="addUsername"
         screenOptions={{
           headerShown: false,
-          cardStyle: {backgroundColor: 'white'},
-        }}>
+          cardStyle: { backgroundColor: 'white' },
+        }}
+      >
         <OnboardingStack.Screen name="addUsername" component={AddUsername} />
         <OnboardingStack.Screen
           name="addProfilePic"
