@@ -49,7 +49,7 @@ const NotificationIcon = ({
       return (
         <View testID={testId} style={containerStyle}>
           {count > 0 && <View style={[style.notificationDot, dotStyle]} />}
-          <Icon Icon={icon} viewStyle={iconStyle} size={size} state={state} />
+          <Icon icon={icon} viewStyle={iconStyle} size={size} state={state} />
         </View>
       );
 
@@ -65,7 +65,7 @@ const NotificationIcon = ({
               <Text textStyle={style.numberText} size={10} bold text={count} />
             </View>
           )}
-          <Icon Icon={icon} viewStyle={iconStyle} size={size} state={state} />
+          <Icon icon={icon} viewStyle={iconStyle} size={size} state={state} />
         </TouchableOpacity>
       );
 
@@ -79,7 +79,7 @@ const NotificationIcon = ({
         >
           <View>
             {count > 0 && <View style={[style.notificationDot, dotStyle]} />}
-            <Icon Icon={icon} viewStyle={iconStyle} size={size} state={state} />
+            <Icon icon={icon} viewStyle={iconStyle} size={size} state={state} />
           </View>
         </TouchableOpacity>
       );

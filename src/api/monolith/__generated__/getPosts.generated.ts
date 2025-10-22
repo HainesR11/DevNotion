@@ -10,28 +10,35 @@ export type GetPostsQueryVariables = Types.Exact<{
 
 export type GetPostsQuery = {
   __typename?: 'Query';
-  getPosts?: Array<{
+  posts?: Array<{
     __typename?: 'Post';
     id: string;
     title?: string | null;
     content?: string | null;
     createdAt?: string | null;
     updatedAt?: string | null;
-    author?: { __typename?: 'User'; name?: string | null } | null;
+    commentCount?: number | null;
+    author?: {
+      __typename?: 'User';
+      name?: string | null;
+      username?: string | null;
+    } | null;
   } | null> | null;
 };
 
 export const GetPostsDocument = `
-    query GetPosts($limit: Int, $offset: Int) {
-  getPosts(limit: $limit, offset: $offset) {
+    query getPosts($limit: Int, $offset: Int) {
+  posts(limit: $limit, offset: $offset) {
     id
     title
     content
     author {
       name
+      username
     }
     createdAt
     updatedAt
+    commentCount
   }
 }
     `;
@@ -43,7 +50,7 @@ export const useGetPostsQuery = <TData = GetPostsQuery, TError = unknown>(
   },
 ) => {
   return useQuery<GetPostsQuery, TError, TData>({
-    queryKey: variables === undefined ? ['GetPosts'] : ['GetPosts', variables],
+    queryKey: variables === undefined ? ['getPosts'] : ['getPosts', variables],
     queryFn: useAxios<GetPostsQuery, GetPostsQueryVariables>(
       GetPostsDocument,
     ).bind(null, variables),
@@ -52,4 +59,4 @@ export const useGetPostsQuery = <TData = GetPostsQuery, TError = unknown>(
 };
 
 useGetPostsQuery.getKey = (variables?: GetPostsQueryVariables) =>
-  variables === undefined ? ['GetPosts'] : ['GetPosts', variables];
+  variables === undefined ? ['getPosts'] : ['getPosts', variables];

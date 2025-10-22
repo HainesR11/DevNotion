@@ -4,6 +4,7 @@ export const ACCOUNT_NAVIGATOR = 'account.navigator';
 export const TAB_NAVIGATOR = 'tab.navigator';
 export const CHAT_NAVIGATOR = 'chat.navigator';
 export const COMMUNITIES_NAVIGATOR = 'communities.navigator';
+export const ADD_POST_NAVIGATOR = 'add_post.navigator';
 export const FRIENDS_NAVIGATOR = 'friends.navigator';
 export const SEARCH_NAVIGATOR = 'search.navigator';
 export const MESSAGES_NAVIGATOR = 'messages.navigator';

@@ -94,30 +94,31 @@ export type Post = {
   content?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
+  likedCount?: Maybe<Scalars['Int']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['String']['output']>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  getComments?: Maybe<Array<Maybe<Comment>>>;
-  getPost?: Maybe<Post>;
-  getPosts?: Maybe<Array<Maybe<Post>>>;
+  comments?: Maybe<Array<Maybe<Comment>>>;
+  post?: Maybe<Post>;
+  posts?: Maybe<Array<Maybe<Post>>>;
   selectAllUsers: Array<Maybe<User>>;
   selectUser?: Maybe<User>;
 };
 
-export type QueryGetCommentsArgs = {
+export type QueryCommentsArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   postId: Scalars['ID']['input'];
 };
 
-export type QueryGetPostArgs = {
+export type QueryPostArgs = {
   id: Scalars['ID']['input'];
 };
 
-export type QueryGetPostsArgs = {
+export type QueryPostsArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
 };

@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 import colors from '@DevEx/utils/styles/palette/colors';
@@ -6,11 +7,12 @@ import theme from '@DevEx/utils/styles/theme';
 import { IconsProps, IconState } from '@DevEx/utils/types/types';
 
 const ThemedIcon: FC<IconsProps> = ({
-  Icon,
+  icon: Icon,
   size = 15,
   state = 'default',
   testId,
   viewStyle,
+  color,
 }) => {
   const IconColors: { [key in IconState]: string } = {
     default: theme.colors.grey70,
@@ -40,8 +42,23 @@ const ThemedIcon: FC<IconsProps> = ({
       icon={Icon}
       style={viewStyle || undefined}
       testID={testId}
-      color={IconColors[state] as string}
+      color={color ?? IconColors[state]}
     />
+  );
+};
+
+interface TappableIconProps extends IconsProps {
+  onPress: () => void;
+}
+
+export const TappableIcon: FC<TappableIconProps> = ({
+  onPress,
+  ...iconProps
+}) => {
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <ThemedIcon {...iconProps} />
+    </TouchableOpacity>
   );
 };
 

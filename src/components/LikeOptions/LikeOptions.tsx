@@ -21,12 +21,12 @@ import { Text } from '../Text/text';
 import createStyles from '../PostItem/PostItem.styles';
 
 const LikeOptions = ({
-  closeLiked,
-  setLiked,
+  onClose,
+  onLiked,
   animatedValues,
 }: {
-  closeLiked: (value: boolean) => void;
-  setLiked: (value: 'LIKE' | 'LOVE' | 'IDEA' | 'LAUGH') => void;
+  onClose: (value: boolean) => void;
+  onLiked: (value: 'LIKE' | 'LOVE' | 'IDEA' | 'LAUGH') => void;
   animatedValues: {
     animatedPosition: any;
     animatedOpacity: any;
@@ -60,27 +60,26 @@ const LikeOptions = ({
           },
         ]}
       >
-        <TouchableOpacity onPress={() => setLiked('LIKE')}>
+        <TouchableOpacity onPress={() => onLiked('LIKE')}>
           <FontAwesomeIcon icon={faThumbsUp} color={colors.primaryBlue} />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => setLiked('LOVE')}>
+        <TouchableOpacity onPress={() => onLiked('LOVE')}>
           <FontAwesomeIcon icon={faHeart} color={colors.criticalRed} />
         </TouchableOpacity>
-        {/* {/* <FontAwesomeIcon icon={} /> */}
 
-        <TouchableOpacity onPress={() => setLiked('LAUGH')}>
+        <TouchableOpacity onPress={() => onLiked('LAUGH')}>
           <FontAwesomeIcon
             icon={faLaughSquint}
             secondaryColor={colors.black}
             color={colors.yellow}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setLiked('IDEA')}>
+        <TouchableOpacity onPress={() => onLiked('IDEA')}>
           <FontAwesomeIcon icon={faLightbulb} />
         </TouchableOpacity>
       </Animated.View>
-      <TouchableWithoutFeedback onPressOut={() => closeLiked(false)}>
+      <TouchableWithoutFeedback onPressOut={() => onClose(false)}>
         <Text textStyle={styles.LikedOptionsPillText} text=" Tap to cancel" />
       </TouchableWithoutFeedback>
     </View>

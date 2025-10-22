@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  faAdd,
   faBars,
   faHouse,
   faMagnifyingGlass,
@@ -11,6 +12,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import NotificationIcon from '@DevEx/components/NotificationIcon/NotificationIcon';
 import {
   ACCOUNT_MANAGEMENT,
+  ADD_POST_NAVIGATOR,
   COMMUNITIES_NAVIGATOR,
   HOME_NAVIGATOR,
   SEARCH_NAVIGATOR,
@@ -49,7 +51,7 @@ const TabNavigator = () => {
         name={HOME_NAVIGATOR}
         options={{
           headerShown: false,
-          tabBarLabelStyle: { display: 'none' },
+          title: 'Home',
           tabBarIcon: ({ focused, size }) =>
             FontAwesomeIcon({
               size,
@@ -63,8 +65,8 @@ const TabNavigator = () => {
         name={SEARCH_NAVIGATOR}
         component={SearchNavigator}
         options={{
+          title: 'Search',
           headerShown: false,
-          tabBarLabelStyle: { display: 'none' },
           tabBarIcon: ({ focused, size }) =>
             FontAwesomeIcon({
               size,
@@ -74,10 +76,24 @@ const TabNavigator = () => {
         }}
       />
       <TabNavStack.Screen
+        component={BaseLayer}
+        name={ADD_POST_NAVIGATOR}
+        options={{
+          title: 'Add Post',
+          headerShown: false,
+          tabBarIcon: ({ focused, size }) =>
+            FontAwesomeIcon({
+              size,
+              color: focused ? colors.primaryBlue : colors.grey20,
+              icon: faAdd,
+            }),
+        }}
+      />
+      <TabNavStack.Screen
         name={COMMUNITIES_NAVIGATOR}
         options={({ navigation }) => ({
           headerShown: false,
-          tabBarLabelStyle: { display: 'none' },
+          title: 'Communities',
           tabBarIcon: ({ focused, size }) =>
             NotificationIcon({
               onPress: () =>
@@ -94,7 +110,7 @@ const TabNavigator = () => {
         name={ACCOUNT_MANAGEMENT}
         options={{
           headerShown: false,
-          tabBarLabelStyle: { display: 'none' },
+          title: 'Account',
           tabBarIcon: ({ focused, size }) =>
             FontAwesomeIcon({
               size,

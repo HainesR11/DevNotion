@@ -8,6 +8,7 @@ const createStyles = (theme: Theme) =>
     PostContainer: {
       backgroundColor: theme.colors.white,
       marginHorizontal: 15,
+      paddingHorizontal: 15,
       borderRadius: 20,
       marginVertical: 7,
       paddingVertical: 10,
@@ -18,6 +19,7 @@ const createStyles = (theme: Theme) =>
     commentOptions: (number: number) => ({
       width: number >= 2 ? 40 : 30,
     }),
+
     PostItemImage: {
       maxHeight: 200,
       minHeight: 200,
@@ -39,9 +41,10 @@ const createStyles = (theme: Theme) =>
     },
 
     PostItemContainer: {
-      marginHorizontal: 30,
-      marginVertical: 10,
-      marginBottom: 30,
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginTop: 20,
     },
     PostItemOptionsContainer: {
       width: '100%',
@@ -53,9 +56,8 @@ const createStyles = (theme: Theme) =>
     PostInfoStripContainer: {
       display: 'flex',
       flexDirection: 'row',
-      marginHorizontal: 20,
-      marginBottom: 10,
-      justifyContent: 'space-between',
+      marginBottom: 5,
+      gap: 10,
     },
 
     PostInfoStripImage: {

@@ -6,15 +6,11 @@ import { useSelector } from 'react-redux';
 import { useGetPostsQuery } from '@DevEx/api/monolith/__generated__/getPosts.generated';
 import { Text } from '@DevEx/components';
 import PostItem from '@DevEx/components/PostItem/PostItem';
-// import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
 import { RootState } from '@DevEx/utils/store/store';
 
 import RenderLoading from './utils/LoadingCard';
 
-// import createStyles from './Home.styles';
-
 const Home = () => {
-  // const styles = useThemedStyles(createStyles);
   const user = useSelector((state: RootState) => state.user);
 
   const {
@@ -58,20 +54,15 @@ const Home = () => {
   return (
     <SafeAreaView edges={['left', 'right']}>
       <ScrollView
+        style={{ height: '100%' }}
         refreshControl={
           <RefreshControl refreshing={loading} onRefresh={() => onRefetch()} />
         }
         scrollEventThrottle={16}
       >
-        {posts.posts?.map((item: any, index: number) => {
+        {posts.posts?.map((item: any) => {
           return (
-            <PostItem
-              index={index}
-              length={posts?.posts?.length}
-              key={index}
-              item={item}
-              user={user.user}
-            />
+            <PostItem key={`post${item.id}`} item={item} user={user.user} />
           );
         })}
       </ScrollView>
