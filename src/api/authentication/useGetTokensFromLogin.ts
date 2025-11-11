@@ -1,6 +1,5 @@
 import axios from 'axios';
 import env from 'react-native-config';
-import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 export type TTokenFromLoginVairables = {
   email: string;
@@ -41,22 +40,4 @@ const fetchGetTokenFromLogin = async ({
   }
 };
 
-const useGetTokensFromLogin = <TError = Error, TContext = unknown>(
-  options?: Omit<
-    UseMutationOptions<any, TError, TTokenFromLoginVairables, TContext>,
-    'mutationKey'
-  > & {
-    mutationKey?: UseMutationOptions<
-      any,
-      TError,
-      TTokenFromLoginVairables,
-      TContext
-    >['mutationKey'];
-  },
-) =>
-  useMutation({
-    mutationKey: ['primeAuthorization'],
-    mutationFn: fetchGetTokenFromLogin,
-    ...options,
-  });
-export default useGetTokensFromLogin;
+export default fetchGetTokenFromLogin;

@@ -66,7 +66,7 @@ const LoginForm = ({ loginVisible, setLoginVisible }: TLoginForm) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const positionAnim = useRef(new Animated.Value(0)).current;
 
-  const loginMutation = useGetTokensFromLogin();
+  const loginMutation = useGetTokensFromLogin;
 
   const onCreateUser = () => {
     const hashedPassword = Buffer.from(password, 'utf8').toString('base64');
@@ -95,50 +95,48 @@ const LoginForm = ({ loginVisible, setLoginVisible }: TLoginForm) => {
   const onLogin = async () => {
     const hashedPassword = Buffer.from(password, 'utf8').toString('base64');
 
-    loginMutation.mutate(
-      {
-        email: username,
-        password: hashedPassword,
-      },
-      {
-        onError: (error: Error) => console.log('--- error ---', error),
-        onSuccess: ({ data }: TLoginSuccessData) => {
-          dispatch(
-            setUser({
-              user: { ...data.user },
-              actions: data.actions,
-              isAuthenticated: true,
-            }),
-          );
-          dispatch(setAuth({ tokens: { OAuth: data.OAuth } }));
-        },
-      },
-    );
+    loginMutation({
+      email: username,
+      password: hashedPassword,
+    })
+      .then(data => {
+        dispatch(
+          setUser({
+            user: { ...data.user, profilePic: require('../../assets/me.jpg') },
+            actions: data.actions,
+            isAuthenticated: true,
+          }),
+        );
+        dispatch(setAuth({ tokens: { OAuth: data.OAuth } }));
+      })
+      .catch((error: Error) => console.log('--- error ---', error));
   };
 
-  useEffect(() => {
-    createUser
-      ? (Animated.timing(fadeAnim, {
-          toValue: 1,
-          duration: 800,
-          useNativeDriver: false,
-        }).start(),
-        Animated.timing(positionAnim, {
-          toValue: 0,
-          duration: 800,
-          useNativeDriver: false,
-        }).start())
-      : (Animated.timing(fadeAnim, {
-          toValue: 0,
-          duration: 500,
-          useNativeDriver: false,
-        }).start(),
-        Animated.timing(positionAnim, {
-          toValue: -50,
-          duration: 500,
-          useNativeDriver: false,
-        }).start());
-  }, [createUser, fadeAnim, positionAnim]);
+  useEffect(
+    () =>
+      createUser
+        ? (Animated.timing(fadeAnim, {
+            toValue: 1,
+            duration: 800,
+            useNativeDriver: false,
+          }).start(),
+          Animated.timing(positionAnim, {
+            toValue: 0,
+            duration: 800,
+            useNativeDriver: false,
+          }).start())
+        : (Animated.timing(fadeAnim, {
+            toValue: 0,
+            duration: 500,
+            useNativeDriver: false,
+          }).start(),
+          Animated.timing(positionAnim, {
+            toValue: -50,
+            duration: 500,
+            useNativeDriver: false,
+          }).start()),
+    [createUser, fadeAnim, positionAnim],
+  );
 
   if (forgotPassword) {
     return (

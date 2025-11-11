@@ -119,7 +119,7 @@ export type THomeScreenDataItem = {
   id: string;
   title?: string;
   content?: string;
-  image?: string;
+  image?: string | null;
   createdAt?: string;
   updatedAt: string;
   commentCount: number;
