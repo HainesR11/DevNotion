@@ -1,7 +1,7 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   faAdd,
-  faBars,
   faHouse,
   faMagnifyingGlass,
   faUserGroup,
@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import NotificationIcon from '@DevEx/components/NotificationIcon/NotificationIcon';
+import UserIconWrapper from '@DevEx/components/user-icon-wrapper/UserIconWrapper';
 import {
   ACCOUNT_MANAGEMENT,
   ADD_POST_NAVIGATOR,
@@ -18,6 +19,7 @@ import {
   SEARCH_NAVIGATOR,
 } from '@DevEx/constants/screenNames';
 import HomeNavigator from '@DevEx/navigators/HomeNavigator/HomeNavigator';
+import { RootState } from '@DevEx/utils/store/store';
 import colors from '@DevEx/utils/styles/palette/colors';
 import { TRootNavigationProps } from '@DevEx/utils/types/types';
 
@@ -33,8 +35,12 @@ const BaseLayer = () => {
 const TabNavigator = () => {
   const [count, setCount] = React.useState(2);
 
+  const userProfilePic = useSelector(
+    (state: RootState) => state.user.user.profilePic,
+  );
+
   const onPress = (navigate?: () => void) => {
-    navigate && navigate();
+    navigate?.();
     setCount(0);
   };
 
@@ -42,15 +48,15 @@ const TabNavigator = () => {
     <TabNavStack.Navigator
       screenOptions={{
         tabBarStyle: {
-          height: '8%',
+          height: '9%',
         },
+        headerShown: false,
       }}
       initialRouteName={HOME_NAVIGATOR}
     >
       <TabNavStack.Screen
         name={HOME_NAVIGATOR}
         options={{
-          headerShown: false,
           title: 'Home',
           tabBarIcon: ({ focused, size }) =>
             FontAwesomeIcon({
@@ -66,7 +72,6 @@ const TabNavigator = () => {
         component={SearchNavigator}
         options={{
           title: 'Search',
-          headerShown: false,
           tabBarIcon: ({ focused, size }) =>
             FontAwesomeIcon({
               size,
@@ -80,7 +85,6 @@ const TabNavigator = () => {
         name={ADD_POST_NAVIGATOR}
         options={{
           title: 'Add Post',
-          headerShown: false,
           tabBarIcon: ({ focused, size }) =>
             FontAwesomeIcon({
               size,
@@ -92,12 +96,11 @@ const TabNavigator = () => {
       <TabNavStack.Screen
         name={COMMUNITIES_NAVIGATOR}
         options={({ navigation }) => ({
-          headerShown: false,
           title: 'Communities',
           tabBarIcon: ({ focused, size }) =>
             NotificationIcon({
               onPress: () =>
-                onPress(() => navigation.navigate(COMMUNITIES_NAVIGATOR)),
+                onPress(navigation.navigate(COMMUNITIES_NAVIGATOR)),
               count: count,
               icon: faUserGroup,
               size,
@@ -109,13 +112,12 @@ const TabNavigator = () => {
       <TabNavStack.Screen
         name={ACCOUNT_MANAGEMENT}
         options={{
-          headerShown: false,
           title: 'Account',
-          tabBarIcon: ({ focused, size }) =>
-            FontAwesomeIcon({
-              size,
-              color: focused ? colors.primaryBlue : colors.grey20,
-              icon: faBars,
+          tabBarIcon: ({ focused }) =>
+            UserIconWrapper({
+              image: userProfilePic,
+              styleType: 'navigator',
+              state: focused ? 'selected' : 'inactiveTab',
             }),
         }}
         component={AccountNavigator}

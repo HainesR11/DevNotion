@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Animated, Share, TouchableOpacity, View } from 'react-native';
+import { Animated, Image, Share, TouchableOpacity, View } from 'react-native';
 import {
   faBookmark,
   faComment,
@@ -23,9 +23,9 @@ import {
 
 import AccountDetails from '../account-details/AccountDetails';
 import Icon, { TappableIcon } from '../Icon/Icon';
-import ImageWrapper from '../image-wrapper/ImageWrapper';
 import LikeOptions from '../LikeOptions/LikeOptions';
 import { Text } from '../Text/text';
+import UserIconWrapper from '../user-icon-wrapper/UserIconWrapper';
 
 import createStyles from './PostItem.styles';
 
@@ -94,7 +94,12 @@ const PostItem = ({
       <View>
         {title && <Text text={title} />}
         {content && <Text text={content} />}
-        {image && <ImageWrapper image={image} style={styles.postImage} />}
+        {image && (
+          <UserIconWrapper
+            image={image as unknown}
+            imageStyle={styles.postImage}
+          />
+        )}
       </View>
       {likeOptions ? (
         <LikeOptions

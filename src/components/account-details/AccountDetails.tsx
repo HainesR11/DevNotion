@@ -4,8 +4,8 @@ import { View } from 'react-native';
 
 import theme from '@DevEx/utils/styles/theme';
 
-import ImageWrapper from '../image-wrapper/ImageWrapper';
 import { Text } from '../Text/text';
+import UserIconWrapper from '../user-icon-wrapper/UserIconWrapper';
 
 type TAccountDetailsProps = {
   author: {
@@ -27,9 +27,9 @@ const AccountDetails = ({ author, createdAt }: TAccountDetailsProps) => {
         marginBottom: 15,
       }}
     >
-      <ImageWrapper
+      <UserIconWrapper
         image={author?.profilePicture}
-        style={{ width: 50, height: 50, borderRadius: 25 }}
+        imageStyle={{ width: 50, height: 50, borderRadius: 25 }}
       />
       <View style={{ display: 'flex' }}>
         <Text text={author.username} />
