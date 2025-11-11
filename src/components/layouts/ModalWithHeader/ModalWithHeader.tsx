@@ -1,12 +1,12 @@
 import React from 'react';
-import {Image, Modal, TouchableOpacity, View} from 'react-native';
+import { Image, Modal, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {faChevronLeft, faXmark} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import { faChevronLeft, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {LoadingSpinner} from '@DevEx/screens';
-import {gradients} from '@DevEx/utils/styles/theme';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
+import { LoadingSpinner } from '@DevEx/screens';
+import { gradients } from '@DevEx/utils/styles/theme';
 
 import createStyles from './ModalWithHeader.styles';
 
@@ -27,7 +27,12 @@ interface TModalWithHeader extends THeaderProps {
   isFirstPage: boolean;
 }
 
-const Header = ({goBack, onClose, closeHidden, isFirstPage}: THeaderProps) => {
+const Header = ({
+  goBack,
+  onClose,
+  closeHidden,
+  isFirstPage,
+}: THeaderProps) => {
   const styles = useThemedStyles(createStyles);
 
   return (
@@ -37,7 +42,8 @@ const Header = ({goBack, onClose, closeHidden, isFirstPage}: THeaderProps) => {
         colors={gradients.devexMainGradient}
       />
       <View
-        style={[isFirstPage ? styles.offset : undefined, styles.iconContainer]}>
+        style={[isFirstPage ? styles.offset : undefined, styles.iconContainer]}
+      >
         {!isFirstPage && (
           <TouchableOpacity onPress={() => goBack}>
             <FontAwesomeIcon size={17} icon={faChevronLeft} />
@@ -80,7 +86,8 @@ TModalWithHeader) => {
       animationType="slide"
       visible={isVisible}
       onRequestClose={onRequestClose}
-      presentationStyle="pageSheet">
+      presentationStyle="pageSheet"
+    >
       <Header
         isFirstPage={isFirstPage}
         closeHidden={closeHidden}

@@ -1,14 +1,14 @@
 import React from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import RNRestart from 'react-native-restart';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {faCircleExclamation} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-import {Button} from '@DevEx/components/Button';
-import {Text} from '@DevEx/components/Text/text';
-import {strings} from '@DevEx/constants/stings';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import { Button } from '@DevEx/components/Button';
+import { Text } from '@DevEx/components/Text/text';
+import { strings } from '@DevEx/constants/stings';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 import useLogout from '@DevEx/utils/functions/useLogout/useLogout';
 import theme from '@DevEx/utils/styles/theme';
 
@@ -41,14 +41,14 @@ const ErrorLayout = ({
         <View>
           <Text
             bold
-            textStyle={{color: theme.colors.grey70}}
+            textStyle={{ color: theme.colors.grey70 }}
             size={20}
             text={title}
           />
           {hasBody && <Text size={14} text={bodyText} />}
         </View>
       </View>
-      <View style={{alignItems: 'center'}}>
+      <View style={{ alignItems: 'center' }}>
         {onPress && (
           <Button type="Primary" onPress={onPress} title="Try Again" />
         )}

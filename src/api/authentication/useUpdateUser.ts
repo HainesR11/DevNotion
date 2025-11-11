@@ -1,6 +1,6 @@
 import axios from 'axios';
 import env from 'react-native-config';
-import {useMutation, UseMutationOptions} from '@tanstack/react-query';
+import { useMutation, UseMutationOptions } from '@tanstack/react-query';
 
 type TUpdateUserParams = {
   email?: string;
@@ -51,7 +51,7 @@ const useUpdateUserMutation = <TError = unknown, TContext = unknown>(
   useMutation({
     mutationKey: ['createUser'],
     mutationFn: (variables: TmutationParams) =>
-      updateUser({params: variables.params, id: variables.id}),
+      updateUser({ params: variables.params, id: variables.id }),
     ...options,
   });
 

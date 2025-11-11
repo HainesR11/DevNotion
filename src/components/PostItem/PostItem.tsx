@@ -1,34 +1,29 @@
 import React, { useRef, useState } from 'react';
-import { Animated, Image, TouchableOpacity, View } from 'react-native';
-import { Share } from 'react-native';
-import { faBookmark as faBookmarkRegular } from '@fortawesome/free-regular-svg-icons';
+import { Animated, Share, TouchableOpacity, View } from 'react-native';
 import {
-  faBookmark as faBookmarkSolid,
-  faCircleXmark,
+  faBookmark,
   faComment,
-  faEllipsis,
-  faEyeSlash,
-  faFlag,
   faHeart,
   faLaughSquint,
   faLightbulb,
-  faShareFromSquare,
+  faShare,
   faThumbsUp,
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useNavigation } from '@react-navigation/native';
 
-import { COMMENT_SCREEN, OPTIONS_SCREEN } from '@DevEx/constants/screenNames';
+import { COMMENT_SCREEN } from '@DevEx/constants/screenNames';
 import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 import colors from '@DevEx/utils/styles/palette/colors';
 import {
   THomeScreenDataItem,
   TNavigationProps,
-  TOptions,
   TUserInfo,
 } from '@DevEx/utils/types/types';
 
+import AccountDetails from '../account-details/AccountDetails';
+import Icon, { TappableIcon } from '../Icon/Icon';
+import ImageWrapper from '../image-wrapper/ImageWrapper';
 import LikeOptions from '../LikeOptions/LikeOptions';
 import { Text } from '../Text/text';
 
@@ -45,82 +40,33 @@ const likeItemMap: { [key: string]: { icon: IconDefinition; color: string } } =
 const PostItem = ({
   item,
   user,
-  index,
 }: {
   item: THomeScreenDataItem;
   user: TUserInfo;
-  index: number;
-  length?: number;
 }) => {
   const styles = useThemedStyles(createStyles);
   const navigation = useNavigation<TNavigationProps>();
 
+  const { author, content, createdAt, commentCount, title, image, id } = item;
+  item.author.profilePicture = require('@DevEx/assets/me.jpg'); // Temporary until backend is done
+
+  const [likes, _] = useState<Array<any>>([
+    { username: user.username, type: 'LIKE' },
+  ]);
   const [saved, setSaved] = useState<boolean>(false);
   const [likeOptions, setLikeOptions] = useState<boolean>(false);
-  // const [liked, setLiked] = useState<any | undefined>(
-  //   item?.likes?.find(({username}) => username === user.username) ?? undefined,
-  // );
-  // const [likedLength, setLikedLength] = useState<number>(
-  //   item.likes.length || 0,
-  // );
-
-  const postOptions: TOptions[] = [
-    saved
-      ? {
-          name: 'Unsave',
-          icon: faBookmarkSolid,
-          onPress: () => setSaved(!saved),
-          color: colors.grey60,
-          iconSize: 20,
-        }
-      : {
-          name: 'Save',
-          icon: faBookmarkRegular,
-          onPress: () => setSaved(!saved),
-          color: colors.grey60,
-          iconSize: 20,
-        },
-    {
-      name: 'Share Via',
-      icon: faShareFromSquare,
-      onPress: async () =>
-        await Share.share({
-          title: item.data.content,
-          url: `www.DevNotion.com/test/post/${item.id}`,
-        }),
-      color: colors.grey60,
-      iconSize: 20,
-    },
-    {
-      name: 'Not Interested',
-      icon: faEyeSlash,
-      onPress: () => {},
-      color: colors.grey60,
-    },
-    {
-      name: `Unfollow ${''}`,
-      icon: faCircleXmark,
-      onPress: () => {},
-      color: colors.grey60,
-    },
-    {
-      name: 'Report',
-      icon: faFlag,
-      onPress: () => {},
-      color: colors.red,
-    },
-  ];
-
-  const image = require('@DevEx/assets/me.jpg');
+  const [liked, setLiked] = useState<
+    { type: string; username: string } | undefined
+  >(likes.find(({ username }) => username === user.username) ?? undefined);
+  const [likedLength, setLikedLength] = useState<number>(likes.length || 0);
 
   const animatedPosition = useRef(new Animated.Value(0)).current;
   const animatedOpacity = useRef(new Animated.Value(0)).current;
-  const animatedProfileOpacity = useRef(new Animated.Value(1)).current;
 
-  // const onPressLiked = () => {
-  //   setLikedLength(liked ? likedLength - 1 : likedLength + 1);
-  //   setLiked(liked ? undefined : { type: 'LIKE', username: user.username });
-  // };
+  const onPressLiked = () => {
+    setLikedLength(liked ? likedLength - 1 : likedLength + 1);
+    setLiked(liked ? undefined : { type: 'LIKE', username: user.username });
+  };
 
   const closeLikedOptions = (likeType?: string) => {
     Animated.timing(animatedPosition, {
@@ -133,33 +79,86 @@ const PostItem = ({
       duration: 100,
       useNativeDriver: false,
     }).start(({ finished }) => {
-      // likeType &&
-      //   setLiked({
-      //     type: likeType,
-      //     username: user.username,
-      //     name: user.name,
-      //     image: '',
-      //   });
+      likeType &&
+        setLiked({
+          type: likeType,
+          username: user.username,
+        });
       finished && setLikeOptions(false);
-      Animated.timing(animatedProfileOpacity, {
-        toValue: 1,
-        duration: 200,
-        useNativeDriver: false,
-      }).start();
     });
   };
 
-  const openLikedOptions = () => {
-    Animated.timing(animatedProfileOpacity, {
-      toValue: 0,
-      duration: 200,
-      useNativeDriver: false,
-    }).start(({ finished }) => {
-      finished && setLikeOptions(true);
-    });
-  };
+  return (
+    <View style={styles.PostContainer} key={`PostItem-${id}`}>
+      <AccountDetails author={author} createdAt={createdAt} />
+      <View>
+        {title && <Text text={title} />}
+        {content && <Text text={content} />}
+        {image && <ImageWrapper image={image} style={styles.postImage} />}
+      </View>
+      {likeOptions ? (
+        <LikeOptions
+          onClose={() => closeLikedOptions()}
+          onLiked={type => closeLikedOptions(type)}
+          animatedValues={{
+            animatedPosition,
+            animatedOpacity,
+          }}
+        />
+      ) : (
+        <View style={styles.PostItemContainer}>
+          <View style={styles.PostInfoStripContainer}>
+            <TouchableOpacity
+              onPress={() => onPressLiked()}
+              onLongPress={() => setLikeOptions(!likeOptions)}
+              style={styles.PostInfoStripContainer}
+            >
+              <Icon
+                icon={liked ? likeItemMap[liked.type].icon : faThumbsUp}
+                color={liked ? likeItemMap[liked?.type].color : colors.grey20}
+              />
+              <Text
+                text={`${likedLength} Likes`}
+                onPress={() =>
+                  navigation.navigate(COMMENT_SCREEN, {
+                    id,
+                    interaction: 'Likes',
+                  })
+                }
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate(COMMENT_SCREEN, {
+                  id,
+                  interaction: 'Comments',
+                })
+              }
+              style={styles.PostInfoStripContainer}
+            >
+              <Icon icon={faComment} state="inactiveTab" />
+              <Text text={`${commentCount} Comments`} />
+            </TouchableOpacity>
+          </View>
 
-  return <></>;
+          <View style={styles.PostInfoStripContainer}>
+            <TappableIcon
+              icon={faShare}
+              state="inactiveTab"
+              onPress={async () =>
+                await Share.share({ message: content ?? '' })
+              }
+            />
+            <TappableIcon
+              icon={faBookmark}
+              onPress={() => setSaved(!saved)}
+              color={saved ? colors.primaryBlue : colors.grey20}
+            />
+          </View>
+        </View>
+      )}
+    </View>
+  );
 };
 
 export default PostItem;

@@ -1,9 +1,9 @@
 import React from 'react';
-import {View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import {Text} from '@DevEx/components';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import { Text } from '@DevEx/components';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 
 import createStyles from './Onboarding.styles';
 

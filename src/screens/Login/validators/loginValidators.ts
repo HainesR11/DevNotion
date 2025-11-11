@@ -1,4 +1,4 @@
-import {Buffer} from 'buffer';
+import { Buffer } from 'buffer';
 
 export const FnEmailValidator = (emailText: string) => {
   // TODO: Find Suitable Validator - Potentionaly react-native-form-validator

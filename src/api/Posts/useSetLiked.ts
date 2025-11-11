@@ -1,8 +1,8 @@
 import axios from 'axios';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import {OAUTH_TOKEN_HEADER} from '@DevEx/constants/headers';
-import {RootState} from '@DevEx/utils/store/store';
+import { OAUTH_TOKEN_HEADER } from '@DevEx/constants/headers';
+import { RootState } from '@DevEx/utils/store/store';
 // import {UseQueryOptions, useQuery} from '@tanstack/react-query';
 
 // import {types as Types} from '@DevEx/utils/types';
@@ -42,11 +42,11 @@ import {RootState} from '@DevEx/utils/store/store';
 //   variables === undefined ? ['unliked'] : ['liked', variables];
 
 const useSendLiked = async postId => {
-  const {id} = useSelector((state: RootState) => state.user.user);
+  const { id } = useSelector((state: RootState) => state.user.user);
   try {
-    const {data} = await axios.post(`/api/posts/${postId}/liked`, {
-      headers: {[OAUTH_TOKEN_HEADER]: 'token'},
-      data: {post_id: 'id', user_id: id},
+    const { data } = await axios.post(`/api/posts/${postId}/liked`, {
+      headers: { [OAUTH_TOKEN_HEADER]: 'token' },
+      data: { post_id: 'id', user_id: id },
     });
     return data;
   } catch (e) {

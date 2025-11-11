@@ -1,14 +1,14 @@
-import {useCallback, useEffect, useRef, useState} from 'react';
-import {AppState, AppStateStatus} from 'react-native';
-import {useSelector} from 'react-redux';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { AppState, AppStateStatus } from 'react-native';
+import { useSelector } from 'react-redux';
 
 // import {setConfig} from '@DevEx/utils/store/configSlice/configSlice';
-import {RootState} from '@DevEx/utils/store/store';
+import { RootState } from '@DevEx/utils/store/store';
 
 type Status = 'loading' | 'maintenanceMode' | 'shouldUpgrade' | 'launchApp';
 
 const useAppStatus = () => {
-  const {show_maintenance_mode} = useSelector(
+  const { show_maintenance_mode } = useSelector(
     (state: RootState) => state.config,
   );
   const [appStatus, setAppStatus] = useState<Status>('loading');
@@ -46,7 +46,7 @@ const useAppStatus = () => {
       listener.remove();
     };
   }, [appStatusCheck, handleAppStateChange, show_maintenance_mode]);
-  return {appStatus};
+  return { appStatus };
 };
 
 export default useAppStatus;

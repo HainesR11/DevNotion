@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
-
-import TimerClock from '@DevEx/assets/Icons/Linear/TimerClock';
-import SearchBar from '@DevEx/components/SearchBar/SearchBar';
-import SearchIconText from '@DevEx/components/Text/SearchIconText';
-import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
-import { RootState } from '@DevEx/utils/store/store';
-import theme from '@DevEx/utils/styles/theme';
-
-import createStyles from './Search.styles';
-import { Text } from '@DevEx/components';
-import { noop } from '@DevEx/utils/functions/minorFunctions';
-import { SEARCH_VIEW_ALL_SCREEN } from '@DevEx/constants/screenNames';
-import { TSearchNavigatorProps } from '@DevEx/utils/types/types';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+
+import TimerClock from '@DevEx/assets/Icons/Linear/TimerClock';
+import { Text } from '@DevEx/components';
+import SearchBar from '@DevEx/components/SearchBar/SearchBar';
+import SearchIconText from '@DevEx/components/Text/SearchIconText';
+import { SEARCH_VIEW_ALL_SCREEN } from '@DevEx/constants/screenNames';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
+import { noop } from '@DevEx/utils/functions/minorFunctions';
+import { RootState } from '@DevEx/utils/store/store';
 import { setSearchHistory as setSearchHistoryState } from '@DevEx/utils/store/userSlice/userSlice';
+import theme from '@DevEx/utils/styles/theme';
+import { TSearchNavigatorProps } from '@DevEx/utils/types/types';
+
+import createStyles from './Search.styles';
 
 const SearchScreen = () => {
   const styles = useThemedStyles(createStyles);

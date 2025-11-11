@@ -1,8 +1,8 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
-import {Theme} from '@DevEx/utils/styles/theme';
+import { Theme } from '@DevEx/utils/styles/theme';
 
-const {width} = Dimensions.get('screen');
+const { width } = Dimensions.get('screen');
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({

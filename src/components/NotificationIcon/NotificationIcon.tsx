@@ -1,12 +1,12 @@
-import React, {FC} from 'react';
-import {TouchableOpacity, View, ViewStyle} from 'react-native';
-import {IconDefinition} from '@fortawesome/fontawesome-svg-core';
+import React, { FC } from 'react';
+import { TouchableOpacity, View, ViewStyle } from 'react-native';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {IconProps} from '@DevEx/utils/types/types';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
+import { IconProps } from '@DevEx/utils/types/types';
 
 import Icon from '../Icon/Icon';
-import {Text} from '../Text/text';
+import { Text } from '../Text/text';
 
 import createStyles from './NotificationIcon.styles';
 
@@ -49,7 +49,7 @@ const NotificationIcon = ({
       return (
         <View testID={testId} style={containerStyle}>
           {count > 0 && <View style={[style.notificationDot, dotStyle]} />}
-          <Icon Icon={icon} viewStyle={iconStyle} size={size} state={state} />
+          <Icon icon={icon} viewStyle={iconStyle} size={size} state={state} />
         </View>
       );
 
@@ -58,13 +58,14 @@ const NotificationIcon = ({
         <TouchableOpacity
           testID={testId}
           onPress={onPress}
-          style={containerStyle}>
+          style={containerStyle}
+        >
           {count > 0 && (
             <View style={[style.notificationNumberedDot, dotStyle]}>
               <Text textStyle={style.numberText} size={10} bold text={count} />
             </View>
           )}
-          <Icon Icon={icon} viewStyle={iconStyle} size={size} state={state} />
+          <Icon icon={icon} viewStyle={iconStyle} size={size} state={state} />
         </TouchableOpacity>
       );
 
@@ -74,10 +75,11 @@ const NotificationIcon = ({
           activeOpacity={1}
           testID={testId}
           onPress={onPress}
-          style={containerStyle}>
+          style={containerStyle}
+        >
           <View>
             {count > 0 && <View style={[style.notificationDot, dotStyle]} />}
-            <Icon Icon={icon} viewStyle={iconStyle} size={size} state={state} />
+            <Icon icon={icon} viewStyle={iconStyle} size={size} state={state} />
           </View>
         </TouchableOpacity>
       );

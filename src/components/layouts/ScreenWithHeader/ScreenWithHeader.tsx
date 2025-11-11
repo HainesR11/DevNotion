@@ -1,6 +1,6 @@
 import React from 'react';
-import {ScrollView, ViewStyle} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { ScrollView, ViewStyle } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import ModalHeader from '../ModalWithHeader/ModalHeader/ModalHeader';
 

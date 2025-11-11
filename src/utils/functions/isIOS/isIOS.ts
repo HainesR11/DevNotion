@@ -1,4 +1,4 @@
-import {Platform} from 'react-native';
+import { Platform } from 'react-native';
 
 const isIOS = (trueValue: any, falseValue: any) => {
   return Platform.OS === 'ios' ? trueValue : falseValue;

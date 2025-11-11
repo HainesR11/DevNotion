@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useEffect, useRef} from 'react';
-import {Animated, Easing, ViewStyle} from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Animated, Easing, ViewStyle } from 'react-native';
 
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 
 import createStyles from './LoadingSpinner.styles';
 
@@ -139,7 +139,8 @@ const LoadingSpinner = ({
             }),
           },
         ],
-      }}>
+      }}
+    >
       <SpinnerItem
         currentState={currentPosition / 50}
         opacity={1}
@@ -153,7 +154,7 @@ const LoadingSpinner = ({
         style={{
           top: '11%',
           left: '70%',
-          transform: [{rotate: '45deg'}],
+          transform: [{ rotate: '45deg' }],
           opacity: 0.125,
         }}
       />
@@ -163,7 +164,7 @@ const LoadingSpinner = ({
         style={{
           top: '35%',
           left: '75%',
-          transform: [{rotate: '90deg'}],
+          transform: [{ rotate: '90deg' }],
           opacity: 0.25,
         }}
       />
@@ -173,7 +174,7 @@ const LoadingSpinner = ({
         style={{
           top: '58%',
           left: '69%',
-          transform: [{rotate: '135deg'}],
+          transform: [{ rotate: '135deg' }],
           opacity: 0.325,
         }}
       />
@@ -191,7 +192,7 @@ const LoadingSpinner = ({
         style={{
           top: '58%',
           left: '23%',
-          transform: [{rotate: '45deg'}],
+          transform: [{ rotate: '45deg' }],
           opacity: 0.625,
         }}
       />
@@ -200,7 +201,7 @@ const LoadingSpinner = ({
         opacity={0.75}
         style={{
           left: '15%',
-          transform: [{rotate: '90deg'}],
+          transform: [{ rotate: '90deg' }],
           opacity: 0.75,
         }}
       />
@@ -210,7 +211,7 @@ const LoadingSpinner = ({
         style={{
           top: '13%',
           left: '23%',
-          transform: [{rotate: '135deg'}],
+          transform: [{ rotate: '135deg' }],
           opacity: 0.825,
         }}
       />

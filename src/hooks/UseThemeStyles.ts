@@ -1,8 +1,8 @@
-import {useMemo} from 'react';
-import {StyleSheet} from 'react-native';
-import {useTheme} from '@shopify/restyle';
+import { useMemo } from 'react';
+import { StyleSheet } from 'react-native';
+import { useTheme } from '@shopify/restyle';
 
-import {Theme} from '@DevEx/utils/styles/theme';
+import { Theme } from '@DevEx/utils/styles/theme';
 
 type StyleSheetDict = ReturnType<typeof StyleSheet.create>;
 export const useThemedStyles = <A extends StyleSheetDict>(

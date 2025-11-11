@@ -42,19 +42,19 @@ const SearchIconText: FC<IconTextProps> = ({
 }) => {
   const styles = useThemedStyles(createStyles);
 
-  return ( 
+  return (
     <TouchableOpacity
       testID={testId}
       style={[styles.container, style]}
       onPress={onPress}
     >
       <View style={styles.icon}>
-        <Icon Icon={icon} size={iconSize} />
+        <Icon icon={icon} size={iconSize} />
       </View>
       <Text text={text} textStyle={[styles.text, textStyle]} />
       {enableRemove && (
         <TouchableOpacity onPress={onRemove}>
-          <Icon Icon={XMark} size={iconSize} state="xMark" />
+          <Icon icon={XMark} size={iconSize} state="xMark" />
         </TouchableOpacity>
       )}
     </TouchableOpacity>

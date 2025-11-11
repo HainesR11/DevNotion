@@ -1,9 +1,9 @@
-import React, {Dispatch, SetStateAction} from 'react';
-import {View} from 'react-native';
+import React, { Dispatch, SetStateAction } from 'react';
+import { View } from 'react-native';
 
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 
-import {Text} from '../Text/text';
+import { Text } from '../Text/text';
 
 import createStyles from './Header.styles';
 
@@ -22,7 +22,8 @@ export const CommentViewHeader = (
           {
             borderBottomWidth: activeHeader === 'Likes' ? 1 : undefined,
           },
-        ]}>
+        ]}
+      >
         <Text
           textStyle={styles.textStyle}
           bold={activeHeader === 'Likes'}
@@ -36,7 +37,8 @@ export const CommentViewHeader = (
           {
             borderBottomWidth: activeHeader === 'Comments' ? 1 : undefined,
           },
-        ]}>
+        ]}
+      >
         <Text
           textStyle={styles.textStyle}
           bold={activeHeader === 'Comments'}

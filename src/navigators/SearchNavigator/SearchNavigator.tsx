@@ -6,8 +6,8 @@ import {
   SEARCH_VIEW_ALL_SCREEN,
 } from '@DevEx/constants/screenNames';
 import { SearchScreen } from '@DevEx/screens';
-import { TSearchNavigatorProps } from '@DevEx/utils/types/types';
 import SearchHistoryScreen from '@DevEx/screens/Search/SearchHistoryScreen';
+import { TSearchNavigatorProps } from '@DevEx/utils/types/types';
 
 const SearchStack = createStackNavigator<TSearchNavigatorProps>();
 

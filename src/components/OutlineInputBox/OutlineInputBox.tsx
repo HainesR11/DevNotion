@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Pressable,
   StyleSheet,
@@ -7,12 +7,12 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import {faEye, faEyeSlash} from '@fortawesome/free-regular-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 
-import {Text} from '../Text/text';
+import { Text } from '../Text/text';
 
 import createStyles from './OutlineTextInput.styles';
 
@@ -55,7 +55,8 @@ const OutlineTextInput = ({
           <Pressable
             style={styles.secureIcon}
             onPress={() => setSecure(!secure)}
-            accessibilityRole="button">
+            accessibilityRole="button"
+          >
             <FontAwesomeIcon icon={secure ? faEyeSlash : faEye} size={24} />
           </Pressable>
         )}

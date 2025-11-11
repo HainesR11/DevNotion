@@ -7,6 +7,7 @@ import {
   ACCOUNT_DETAILS,
   ACCOUNT_MANAGEMENT,
   ACCOUNT_NAVIGATOR,
+  ADD_POST_NAVIGATOR,
   ADD_POST_SCREEN,
   CHAT_NAVIGATOR,
   COMMENT_SCREEN,
@@ -74,6 +75,7 @@ export type TRootNavigationProps = {
   [ACCOUNT_NAVIGATOR]: undefined;
   [HOME_NAVIGATOR]: undefined;
   [CHAT_NAVIGATOR]: undefined;
+  [ADD_POST_NAVIGATOR]: undefined;
   [COMMUNITIES_NAVIGATOR]: undefined;
   [FRIENDS_NAVIGATOR]: undefined;
   [SEARCH_NAVIGATOR]: undefined;
@@ -113,22 +115,20 @@ export type TUserInfo = {
 
 export type TNavigationProps = StackNavigationProp<TRootNavigationProps>;
 
-type TPostItemUser = {
-  name: string;
-  image: any;
-  username: string;
-};
-
-type TCommentItem = {
-  user: TPostItemUser;
-  data: string;
-};
-
 export type THomeScreenDataItem = {
   id: string;
-  user: TPostItemUser;
-  data: { content: string; image?: unknown };
-  comments: TCommentItem[];
+  title?: string;
+  content?: string;
+  image?: string;
+  createdAt?: string;
+  updatedAt: string;
+  commentCount: number;
+  author: {
+    __typename?: 'User';
+    name: string;
+    username: string;
+    profilePicture?: any;
+  };
 };
 
 export type TOptions = {
@@ -161,12 +161,13 @@ export interface IconProps {
 }
 
 export interface IconsProps {
-  Icon: FC<IconProps> | IconDefinition;
+  icon: FC<IconProps> | IconDefinition;
   size?: number;
   state?: IconState;
   viewStyle?: StyleProp<ViewStyle>;
   testId?: string;
   isScalable?: boolean;
+  color?: string;
 }
 
 export const IconStateNames = [

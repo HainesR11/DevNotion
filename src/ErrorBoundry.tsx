@@ -1,8 +1,8 @@
 import React from 'react';
-import {Component, ErrorInfo, ReactNode} from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
 import RNRestart from 'react-native-restart';
 
-import {ErrorLayout} from './components/layouts';
+import { ErrorLayout } from './components/layouts';
 
 interface Props {
   children: ReactNode;
@@ -18,7 +18,7 @@ export class ErrorBoundary extends Component<Props, State> {
   };
 
   static getDerivedStateFromError() {
-    return {hasError: true};
+    return { hasError: true };
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
@@ -26,12 +26,12 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   handleRestart = async () => {
-    this.setState({hasError: false});
+    this.setState({ hasError: false });
   };
 
   render() {
-    const {hasError} = this.state;
-    const {children} = this.props;
+    const { hasError } = this.state;
+    const { children } = this.props;
 
     if (hasError) {
       return (

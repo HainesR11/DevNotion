@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
-import {Image, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {useSelector} from 'react-redux';
+import React, { useState } from 'react';
+import { Image, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSelector } from 'react-redux';
 
-import {Button} from '@DevEx/components';
-import {Text} from '@DevEx/components';
-import {strings} from '@DevEx/constants/stings';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {RootState} from '@DevEx/utils/store/store';
+import { Button } from '@DevEx/components';
+import { Text } from '@DevEx/components';
+import { strings } from '@DevEx/constants/stings';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
+import { RootState } from '@DevEx/utils/store/store';
 import colors from '@DevEx/utils/styles/palette/colors';
 
 import LoginForm from './index';
@@ -18,7 +18,7 @@ const Login = () => {
   const styles = useThemedStyles(createStyles);
 
   const [loginVisible, setLoginVisible] = useState<boolean>(false);
-  const {isAuthenticated} = useSelector((state: RootState) => state.user);
+  const { isAuthenticated } = useSelector((state: RootState) => state.user);
 
   return (
     <SafeAreaView>
@@ -30,16 +30,16 @@ const Login = () => {
 
       {!isAuthenticated && (
         <View style={[styles.viewContainer]}>
-          <View style={{alignItems: 'center'}}>
+          <View style={{ alignItems: 'center' }}>
             <Image
               source={require('@DevEx/assets/DevExIcon.png')}
-              style={{width: 300, height: 300}}
+              style={{ width: 300, height: 300 }}
             />
             <Text
               text={strings.loginWelcome}
               testId="WelcomeText"
               bold
-              textStyle={{fontSize: 25, marginVertical: 10}}
+              textStyle={{ fontSize: 25, marginVertical: 10 }}
             />
             <Text
               text={strings.loginText}

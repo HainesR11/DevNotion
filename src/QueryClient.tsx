@@ -1,8 +1,8 @@
 import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {createAsyncStoragePersister} from '@tanstack/query-async-storage-persister';
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import {PersistQueryClientProvider} from '@tanstack/react-query-persist-client';
+import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 
 interface IQClientProviderProps {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ const getQueryConfig = () => {
   const staleTime = 300000;
   const cacheTime = 600000;
   const retry = 1;
-  return {cacheTime, staleTime, persistOffline, retry};
+  return { cacheTime, staleTime, persistOffline, retry };
 };
 
 const queryClient = (cacheTime: number, staleTime: number, retry: number) =>
@@ -31,8 +31,8 @@ const queryClient = (cacheTime: number, staleTime: number, retry: number) =>
       },
     },
   });
-const QClientProvider = ({children}: IQClientProviderProps) => {
-  const {cacheTime, staleTime, persistOffline, retry} = getQueryConfig();
+const QClientProvider = ({ children }: IQClientProviderProps) => {
+  const { cacheTime, staleTime, persistOffline, retry } = getQueryConfig();
   const _queryClient = queryClient(cacheTime, staleTime, retry);
   if (persistOffline) {
     const persister = createAsyncStoragePersister({
@@ -41,8 +41,9 @@ const QClientProvider = ({children}: IQClientProviderProps) => {
     });
     return (
       <PersistQueryClientProvider
-        persistOptions={{persister}}
-        client={_queryClient}>
+        persistOptions={{ persister }}
+        client={_queryClient}
+      >
         {children}
       </PersistQueryClientProvider>
     );

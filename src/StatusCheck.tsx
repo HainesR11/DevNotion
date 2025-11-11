@@ -1,11 +1,11 @@
-import React, {FC, PropsWithChildren} from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import React, { FC, PropsWithChildren } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import useAppStatus from '@DevEx/hooks/useAppStatus';
-import {LoadingSpinner, Maintenance} from '@DevEx/screens';
+import { LoadingSpinner, Maintenance } from '@DevEx/screens';
 
-const AppStatusCheck: FC<PropsWithChildren> = ({children}) => {
-  const {appStatus} = useAppStatus();
+const AppStatusCheck: FC<PropsWithChildren> = ({ children }) => {
+  const { appStatus } = useAppStatus();
 
   switch (appStatus) {
     case 'loading':

@@ -1,11 +1,11 @@
 import React from 'react';
-import {fireEvent, render} from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 
 import {
   MESSAGES_NAVIGATOR,
   NOTIFICATION_SCREEN,
 } from '@DevEx/constants/screenNames';
-import {mockGoBack, mockNavigate} from '@DevEx/testing/setup-jest-tests';
+import { mockGoBack, mockNavigate } from '@DevEx/testing/setup-jest-tests';
 import TestWrapper from '@DevEx/testing/TestWrapper';
 
 import HomeHeader from './HomeHeader';
@@ -29,7 +29,7 @@ describe('Headers', () => {
 
       //* Change this when Notification Page is being built
       it('SHOULD navigate to the search navigator WHEN the bell icon is pressed', () => {
-        const {getByTestId} = render(
+        const { getByTestId } = render(
           <TestWrapper>
             <HomeHeader />
           </TestWrapper>,
@@ -43,7 +43,7 @@ describe('Headers', () => {
       });
 
       it('SHOULD navigate to the Messgaes navigator WHEN the plane icon is pressed', () => {
-        const {getByTestId} = render(
+        const { getByTestId } = render(
           <TestWrapper>
             <HomeHeader isHomeScreen={true} />,
           </TestWrapper>,
@@ -66,7 +66,7 @@ describe('Headers', () => {
       });
 
       it('Should render a chevron along with the title of the screen', () => {
-        const {getByTestId} = render(
+        const { getByTestId } = render(
           <TestWrapper>
             <HomeHeader isHomeScreen={false} title="TestScreen" />,
           </TestWrapper>,

@@ -1,9 +1,9 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 import colors from '@DevEx/utils/styles/palette/colors';
-import {Theme} from '@DevEx/utils/styles/theme';
+import { Theme } from '@DevEx/utils/styles/theme';
 
-const {height} = Dimensions.get('screen');
+const { height } = Dimensions.get('screen');
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
@@ -18,7 +18,7 @@ const createStyles = (theme: Theme) =>
       justifyContent: 'space-around',
       height: height - height / 3,
     },
-    gradientText: {fontSize: 30, textAlign: 'center'},
+    gradientText: { fontSize: 30, textAlign: 'center' },
     image: {
       marginBottom: theme.spacing.m,
       width: theme.spacing.xl,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 
 import colors from '@DevEx/utils/styles/palette/colors';
 import theme from '@DevEx/utils/styles/theme';

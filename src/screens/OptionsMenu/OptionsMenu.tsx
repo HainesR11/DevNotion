@@ -1,11 +1,11 @@
-import React, {FC} from 'react';
-import {TouchableOpacity, View} from 'react-native';
-import {IconProp} from '@fortawesome/fontawesome-svg-core';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import React, { FC } from 'react';
+import { TouchableOpacity, View } from 'react-native';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-import {Text} from '@DevEx/components';
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
-import {TOptions} from '@DevEx/utils/types/types';
+import { Text } from '@DevEx/components';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
+import { TOptions } from '@DevEx/utils/types/types';
 
 import DynamicModal from '../../components/DynamicModal/DynamicModal';
 
@@ -16,11 +16,11 @@ interface IOptionsMenu {
     key: string;
     name: string;
     path?: string;
-    params: {options: TOptions[]};
+    params: { options: TOptions[] };
   };
 }
 
-const OptionsMenu: FC<IOptionsMenu> = ({route}: IOptionsMenu) => {
+const OptionsMenu: FC<IOptionsMenu> = ({ route }: IOptionsMenu) => {
   const options = route?.params.options;
 
   const [triggerClose, setTriggerClose] = React.useState(false);
@@ -32,16 +32,18 @@ const OptionsMenu: FC<IOptionsMenu> = ({route}: IOptionsMenu) => {
       triggerClose={triggerClose}
       testID="options-menu-modal"
       maxHeight={68 * (options?.length ? options?.length : 1)}
-      style={styles.ModalContainer}>
+      style={styles.ModalContainer}
+    >
       <View
         style={[
           styles.ViewContainer,
           {
             height: 50 * (options?.length ? options?.length : 1),
           },
-        ]}>
+        ]}
+      >
         {options?.map((option: TOptions, index: number) => {
-          const {iconSize, onPress, name, icon, color} = option;
+          const { iconSize, onPress, name, icon, color } = option;
           return (
             <View key={index}>
               <TouchableOpacity
@@ -49,7 +51,8 @@ const OptionsMenu: FC<IOptionsMenu> = ({route}: IOptionsMenu) => {
                   onPress();
                   setTriggerClose(true);
                 }}
-                style={styles.ButtonContainer}>
+                style={styles.ButtonContainer}
+              >
                 <View style={styles.IconContainer}>
                   <FontAwesomeIcon
                     icon={icon as IconProp}

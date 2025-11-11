@@ -1,17 +1,17 @@
-import React, {useState} from 'react';
-import {Image, Share, TouchableOpacity, View} from 'react-native';
+import React, { useState } from 'react';
+import { Image, Share, TouchableOpacity, View } from 'react-native';
 import {
   faShare,
   faThumbsDown,
   faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 import colors from '@DevEx/utils/styles/palette/colors';
-import {THomeScreenDataItem, TUserInfo} from '@DevEx/utils/types/types';
+import { THomeScreenDataItem, TUserInfo } from '@DevEx/utils/types/types';
 
-import {Text} from '../Text/text';
+import { Text } from '../Text/text';
 
 import createStyles from './CommentItem.styles';
 
@@ -56,7 +56,8 @@ const CommentItem = ({
               setLikedLength(liked ? likedLength - 1 : likedLength + 1);
               setLiked(!liked);
             }}
-            style={[styles.PostItemShareItem, styles.PostItemCenter]}>
+            style={[styles.PostItemShareItem, styles.PostItemCenter]}
+          >
             <Text text={likedLength} />
             <FontAwesomeIcon
               color={liked ? colors.green : colors.grey50}
@@ -70,7 +71,8 @@ const CommentItem = ({
               );
               setDisliked(!disliked);
             }}
-            style={[styles.PostItemShareItem, styles.PostItemCenter]}>
+            style={[styles.PostItemShareItem, styles.PostItemCenter]}
+          >
             <Text text={dislikedLength} />
             <FontAwesomeIcon
               color={disliked ? colors.red : colors.grey50}
@@ -79,8 +81,9 @@ const CommentItem = ({
           </TouchableOpacity>
           <TouchableOpacity
             // TODO: create share page (to followers)
-            onPress={() => Share.share({message: item.data})}
-            style={[styles.PostItemShareItem, styles.PostItemCenter]}>
+            onPress={() => Share.share({ message: item.data })}
+            style={[styles.PostItemShareItem, styles.PostItemCenter]}
+          >
             <FontAwesomeIcon color={colors.grey50} icon={faShare} />
           </TouchableOpacity>
         </View>

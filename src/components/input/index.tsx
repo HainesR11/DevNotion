@@ -1,15 +1,15 @@
 import React from 'react';
-import {TextInput, TextInputProps, TextStyle, View} from 'react-native';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import { TextInput, TextInputProps, TextStyle, View } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-import {useThemedStyles} from '@DevEx/hooks/UseThemeStyles';
+import { useThemedStyles } from '@DevEx/hooks/UseThemeStyles';
 import {
   TEmailIconInputProps,
   TIconInputProps,
   TInputProps,
 } from '@DevEx/utils/types/types';
 
-import {createStyles} from './input.styles';
+import { createStyles } from './input.styles';
 
 export const InputBox = ({
   placeholder,
@@ -39,7 +39,7 @@ export const IconInput = ({
   const styles = useThemedStyles(createStyles);
 
   return (
-    <View style={{...styles.container}}>
+    <View style={{ ...styles.container }}>
       <FontAwesomeIcon icon={icon} />
       <TextInput
         style={styles.textInput}
@@ -101,10 +101,11 @@ export const VerificationCodeInput = ({
         justifyContent: 'center',
         backgroundColor: 'red',
         alignContent: 'center',
-      }}>
+      }}
+    >
       <TextInput
         maxLength={6}
-        style={{letterSpacing: 40, textAlign: 'center'}}
+        style={{ letterSpacing: 40, textAlign: 'center' }}
       />
     </View>
   );
@@ -115,7 +116,11 @@ interface TSearchInputProps extends TextInputProps {
   onChange?: (e: any) => void;
 }
 
-export const SearchInput = ({style, onChange, ...rest}: TSearchInputProps) => {
+export const SearchInput = ({
+  style,
+  onChange,
+  ...rest
+}: TSearchInputProps) => {
   return (
     <TextInput
       style={[
