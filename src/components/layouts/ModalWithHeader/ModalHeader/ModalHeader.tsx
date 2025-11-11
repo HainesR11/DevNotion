@@ -28,33 +28,27 @@ const ModalHeader = ({
   const navigation = useNavigation();
 
   const onBackHandler = () => navigation.goBack();
+
   const onCloseHandler = () => {
-    const parent = navigation.getParent();
     if (onClose) {
       onClose();
     } else {
-      if (parent) {
-        parent.goBack();
-      } else {
-        onBackHandler();
-      }
+      onBackHandler();
     }
   };
 
   return (
-    <View style={styles.header}>
+    <>
       <LinearGradient
         style={styles.gradientLine}
         colors={gradients.devexMainGradient}
       />
-      <View
-        style={[
-          isFirstScreen ? styles.offset : undefined,
-          styles.iconContainer,
-        ]}
-      >
+      <View style={styles.modalContainer}>
         {!isFirstScreen && (
-          <TouchableOpacity onPress={onBackHandler}>
+          <TouchableOpacity
+            onPress={onBackHandler}
+            style={[styles.icon, styles.iconLeft]}
+          >
             <FontAwesomeIcon size={17} icon={faChevronLeft} />
           </TouchableOpacity>
         )}
@@ -67,12 +61,15 @@ const ModalHeader = ({
           />
         )}
         {!closeHidden && (
-          <TouchableOpacity onPress={onCloseHandler}>
+          <TouchableOpacity
+            onPress={onCloseHandler}
+            style={[styles.icon, styles.iconRight]}
+          >
             <FontAwesomeIcon size={20} icon={faXmark} />
           </TouchableOpacity>
         )}
       </View>
-    </View>
+    </>
   );
 };
 export default ModalHeader;

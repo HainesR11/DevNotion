@@ -8,16 +8,18 @@ type TScreenWithHeader = {
   children: React.ReactNode;
   isFirstScreen?: boolean;
   style?: ViewStyle;
+  title?: string;
 };
 
 const ScreenWithHeader = ({
   children,
   isFirstScreen,
   style,
+  title,
 }: TScreenWithHeader) => {
   return (
     <SafeAreaView edges={[]} style={style}>
-      <ModalHeader isFirstScreen={isFirstScreen} />
+      <ModalHeader isFirstScreen={isFirstScreen} title={title} />
       <ScrollView>{children}</ScrollView>
     </SafeAreaView>
   );

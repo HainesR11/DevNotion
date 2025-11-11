@@ -59,7 +59,7 @@ const AccountManagement = () => {
   const styles = useThemedStyles(createStyles);
 
   return (
-    <SafeAreaView edges={['top']} style={styles.accountManagmentContainer}>
+    <SafeAreaView edges={[]} style={styles.accountManagmentContainer}>
       <View>
         <View style={styles.headerContainer}>
           <Image
@@ -71,7 +71,7 @@ const AccountManagement = () => {
               bold
               gradientStyle="devexMainGradient"
               textStyle={styles.gradientHeaderText}
-              text={user.name}
+              text={user.username}
             />
             <Text textStyle={styles.headerText} text={user.email} />
           </View>

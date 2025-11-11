@@ -6,39 +6,6 @@ const { width } = Dimensions.get('screen');
 
 const createStyles = (theme: Theme) =>
   StyleSheet.create({
-    Container: {
-      display: 'flex',
-      flexDirection: 'row',
-      width: width,
-      marginTop: 10,
-      paddingLeft: 20,
-      paddingRight: 20,
-      justifyContent: 'space-between',
-    },
-    firstContainer: {
-      display: 'flex',
-      flexDirection: 'row-reverse',
-      width: width,
-      marginTop: 10,
-      paddingLeft: 20,
-      paddingRight: 20,
-      justifyContent: 'space-between',
-    },
-
-    container: {
-      flex: 1,
-      backgroundColor: theme.colors.modalBackground,
-    },
-    contentContainer: {
-      flexGrow: 1,
-    },
-
-    header: {
-      alignItems: 'center',
-      height: theme.spacing['3xl'],
-      borderBottomColor: theme.colors.grey5,
-      borderBottomWidth: 1.5,
-    },
     gradientLine: {
       width: width,
       height: 5,
@@ -48,16 +15,21 @@ const createStyles = (theme: Theme) =>
       width: theme.spacing.xl,
       height: theme.spacing.xl,
     },
-    iconContainer: {
-      justifyContent: 'space-between',
+    modalContainer: {
       display: 'flex',
       flexDirection: 'row',
-      flex: 3,
-      width: width - 30,
+      justifyContent: 'center',
       alignItems: 'center',
+      padding: theme.spacing.m,
     },
-    offset: {
-      paddingLeft: width / 2 - 32.5,
+    icon: {
+      position: 'absolute',
+    },
+    iconLeft: {
+      left: theme.spacing.xs,
+    },
+    iconRight: {
+      right: theme.spacing.xs,
     },
   });
 

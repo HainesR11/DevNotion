@@ -22,6 +22,7 @@ const createStyles = (theme: Theme) =>
       display: 'flex',
       flexDirection: 'row',
       paddingVertical: theme.spacing.xl,
+      paddingTop: 80,
       borderBottomColor: theme.colors.grey50,
       backgroundColor: theme.colors.grey10,
       borderBottomWidth: 1,
@@ -44,7 +45,7 @@ const createStyles = (theme: Theme) =>
     },
     accountManagmentContainer: {
       height: '100%',
-      algin: 'center',
+      alignContent: 'center',
       justifyContent: 'space-between',
     },
   });
