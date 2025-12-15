@@ -5,7 +5,6 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 import {
   ACCOUNT_DETAILS,
-  ACCOUNT_MANAGEMENT,
   ACCOUNT_NAVIGATOR,
   ADD_POST_NAVIGATOR,
   ADD_POST_SCREEN,
@@ -21,6 +20,7 @@ import {
   MESSAGES_SCREEN_MESSAGE,
   NOTIFICATION_SCREEN,
   OPTIONS_SCREEN,
+  PROFILE_SCREEN,
   SEARCH_NAVIGATOR,
   SEARCH_SCREEN,
   SEARCH_VIEW_ALL_SCREEN,
@@ -83,7 +83,7 @@ export type TRootNavigationProps = {
 
   //Screens
   [ACCOUNT_DETAILS]: undefined;
-  [ACCOUNT_MANAGEMENT]: undefined;
+  [PROFILE_SCREEN]: undefined;
   [ADD_POST_SCREEN]: undefined;
   [HOME_SCREEN]: undefined;
   ChatScreen: undefined;

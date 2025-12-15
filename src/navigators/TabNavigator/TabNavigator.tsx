@@ -12,10 +12,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import NotificationIcon from '@DevEx/components/NotificationIcon/NotificationIcon';
 import UserIconWrapper from '@DevEx/components/user-icon-wrapper/UserIconWrapper';
 import {
-  ACCOUNT_MANAGEMENT,
   ADD_POST_NAVIGATOR,
   COMMUNITIES_NAVIGATOR,
   HOME_NAVIGATOR,
+  PROFILE_SCREEN,
   SEARCH_NAVIGATOR,
 } from '@DevEx/constants/screenNames';
 import HomeNavigator from '@DevEx/navigators/HomeNavigator/HomeNavigator';
@@ -110,7 +110,7 @@ const TabNavigator = () => {
         component={BaseLayer}
       />
       <TabNavStack.Screen
-        name={ACCOUNT_MANAGEMENT}
+        name={PROFILE_SCREEN}
         options={{
           title: 'Account',
           tabBarIcon: ({ focused }) =>

@@ -12,7 +12,7 @@ export const MESSAGES_NAVIGATOR = 'messages.navigator';
 //Screen Names
 export const HOME_SCREEN = 'home.screen';
 export const ACCOUNT_DETAILS = 'account.details';
-export const ACCOUNT_MANAGEMENT = 'account.management';
+export const PROFILE_SCREEN = 'profile.screen';
 export const SEARCH_SCREEN = 'search.home.screen';
 export const SEARCH_VIEW_ALL_SCREEN = 'search.view_all.screen';
 export const DEBUG_SCREEN = 'debug.screen';
