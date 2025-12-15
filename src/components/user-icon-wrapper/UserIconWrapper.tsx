@@ -33,7 +33,7 @@ const UserIconWrapper = ({
 
   if (!image) {
     return (
-      <View style={getCustomStyles()}>
+      <View style={[getCustomStyles()]}>
         <Icon icon={UserPlaceholder} size={50} state={state} />
       </View>
     );
